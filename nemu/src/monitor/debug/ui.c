@@ -37,9 +37,16 @@ static int cmd_q(char *args) {
 }
 
 static int cmd_help(char *args);
-
+static int cmd_si(char *args);
 static int cmd_si(char *args){
-	return 0;
+	int si_tmp = sizeof(args);
+	int si_cnt = 0;
+	int i;	
+	for(i = 0;i < si_tmp;i++){
+		si_cnt += (args[i]-'0');
+		si_cnt*=10;
+	}
+	return si_cnt;
 }
 
 static struct {
