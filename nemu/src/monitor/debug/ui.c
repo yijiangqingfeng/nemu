@@ -75,7 +75,9 @@ static int cmd_x(char *args);
 
 static int cmd_x(char *args){
 	char *args_1;
-	args_1 = strtok(args," ");	
+	args_1 = strtok(args," ");
+	args = strtok(NULL," ");
+	printf("%s %s\n",args_1, args);	
 	int x_tmp_1 = strlen(args_1);
 	int x_cnt_1 = 0;
 	int i_1;	
