@@ -40,7 +40,7 @@ static int cmd_help(char *args);
 static int cmd_si(char *args);
 static int cmd_si(char *args){
 	int si_tmp = strlen(args);
-	int si_cnt = 0;
+	uint32_t si_cnt = 0;
 	int i;	
 	for(i = 0;i < si_tmp;i++){
 		si_cnt = si_cnt + (args[i]-'0');
