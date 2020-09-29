@@ -93,8 +93,8 @@ static int cmd_x(char *args){
 	unsigned int x_tmp;
 	x_tmp = (unsigned int) x_cnt_2;
 	int i;	
-	for(i = 0;i < x_cnt_1;i ++){
-		printf("%u",swaddr_read(x_tmp,4));
+	for(i = 2;i < x_cnt_1;i ++){
+		printf("%u\n",swaddr_read(x_tmp,4*i-8));
 	}
 	return 0;
 }
