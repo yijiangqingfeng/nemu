@@ -94,7 +94,7 @@ static int cmd_x(char *args){
 	x_tmp = (unsigned int) x_cnt_2;
 	int i;	
 	for(i = 0;i < x_cnt_1;i ++){
-		printf("%x\n",swaddr_read(x_tmp+i,4));
+		printf("%x\n",swaddr_read(x_tmp+i*4,4));
 	}
 	return 0;
 }
