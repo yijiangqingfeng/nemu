@@ -37,7 +37,9 @@ static int cmd_q(char *args) {
 }
 
 static int cmd_help(char *args);
+
 static int cmd_si(char *args);
+
 static int cmd_si(char *args){
 	if(args == NULL){
 		cpu_exec(1);
@@ -54,6 +56,21 @@ static int cmd_si(char *args){
 	return 0;
 }
 
+static int cmd_info(char *args);
+
+static int cmd_info(char *args){
+	if(args == NULL)return 0;
+	printf("eax is %u\n",cpu.eax);
+	printf("ecx is %u\n",cpu.ecx);
+	printf("edx is %u\n",cpu.edx);
+	printf("ebx is %u\n",cpu.ebx);
+	printf("esp is %u\n",cpu.esp);
+	printf("ebp is %u\n",cpu.ebp);
+	printf("esi is %u\n",cpu.esi);
+	printf("edi is %u\n",cpu.edi);
+	return 0;
+}
+
 static struct {
 	char *name;
 	char *description;
@@ -65,6 +82,7 @@ static struct {
 
 	/* TODO: Add more commands */
 	{"si","si command.",cmd_si },
+	{"info","info command.",cmd_info },
 };
 
 #define NR_CMD (sizeof(cmd_table) / sizeof(cmd_table[0]))
