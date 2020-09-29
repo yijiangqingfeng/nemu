@@ -48,7 +48,7 @@ static int cmd_si(char *args){
 	}
 	uint32_t si_count;
 	si_count = si_cnt;
-	cpu_exec(si_count);
+	cpu_exec(10);
 	return 0;
 }
 
