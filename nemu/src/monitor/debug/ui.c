@@ -46,7 +46,8 @@ static int cmd_si(char *args){
 		si_cnt += (args[i]-'0');
 		if(i!=si_tmp-1)si_cnt = si_cnt * 10;
 	}
-	return si_cnt;
+	cpu_exec(si_cnt);
+	return 0;
 }
 
 static struct {
@@ -59,7 +60,7 @@ static struct {
 	{ "q", "Exit NEMU", cmd_q },
 
 	/* TODO: Add more commands */
-	{"si","si command.",cmd_si},
+	{"si","si command.",cmd_si },
 };
 
 #define NR_CMD (sizeof(cmd_table) / sizeof(cmd_table[0]))
