@@ -46,8 +46,7 @@ static int cmd_si(char *args){
 		si_cnt = si_cnt + (args[i]-'0');
 		if(i!=si_tmp-1){si_cnt = si_cnt * 10;}
 	}
-	printf("%u",si_cnt);
-	cpu_exec(1);
+	cpu_exec(si_cnt);
 	return 0;
 }
 
