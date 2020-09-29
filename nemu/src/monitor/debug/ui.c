@@ -39,6 +39,10 @@ static int cmd_q(char *args) {
 static int cmd_help(char *args);
 static int cmd_si(char *args);
 static int cmd_si(char *args){
+	if(args == NULL){
+		cpu_exec(1);
+		return 0;
+	}	
 	int si_tmp = strlen(args);
 	int si_cnt = 0;
 	int i;	
@@ -46,7 +50,6 @@ static int cmd_si(char *args){
 		si_cnt = si_cnt + (args[i]-'0');
 		if(i!=si_tmp-1){si_cnt = si_cnt * 10;}
 	}
-	printf("%u",si_cnt);
 	if(!si_cnt)si_cnt = 1;
 	while(si_cnt--)cpu_exec(1);
 	return 0;
