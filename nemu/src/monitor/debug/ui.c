@@ -59,7 +59,7 @@ static int cmd_si(char *args){
 static int cmd_info(char *args);
 
 static int cmd_info(char *args){
-	if(args == NULL)return 0;
+	//if(args == NULL)return 0;
 	printf("eax is %u\n",cpu.eax);
 	printf("ecx is %u\n",cpu.ecx);
 	printf("edx is %u\n",cpu.edx);
