@@ -50,7 +50,6 @@ static int cmd_si(char *args){
 		si_cnt = si_cnt + (args[i]-'0');
 		if(i!=si_tmp-1){si_cnt = si_cnt * 10;}
 	}
-	if(!si_cnt)si_cnt = 1;
 	while(si_cnt--)cpu_exec(1);
 	return 0;
 }
