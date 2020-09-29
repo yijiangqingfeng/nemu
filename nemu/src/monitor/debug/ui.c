@@ -86,14 +86,14 @@ static int cmd_x(char *args){
 	int x_tmp_2 = strlen(args);
 	int x_cnt_2 = 0;
 	int i_2;	
-	for(i_2 = 0;i_2 < x_tmp_2;i_2++){
+	for(i_2 = 2;i_2 < x_tmp_2;i_2++){
 		x_cnt_2 = x_cnt_2 + (args[i_2]-'0');
 		if(i_2!=x_tmp_2-1){x_cnt_2 = x_cnt_2 * 16;}
 	}
 	unsigned int x_tmp;
 	x_tmp = (unsigned int) x_cnt_2;
 	int i;	
-	for(i = 2;i < x_cnt_1;i ++){
+	for(i = 0;i < x_cnt_1;i ++){
 		printf("%u\n",swaddr_read(x_tmp+4*i-8,4));
 	}
 	return 0;
