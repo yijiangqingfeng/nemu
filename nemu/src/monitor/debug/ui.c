@@ -40,13 +40,15 @@ static int cmd_help(char *args);
 static int cmd_si(char *args);
 static int cmd_si(char *args){
 	int si_tmp = strlen(args);
-	uint32_t si_cnt = 0;
+	int si_cnt = 0;
 	int i;	
 	for(i = 0;i < si_tmp;i++){
 		si_cnt = si_cnt + (args[i]-'0');
 		if(i!=si_tmp-1){si_cnt = si_cnt * 10;}
 	}
-	cpu_exec(si_cnt);
+	uint32_t si_count;
+	si_count = si_cnt;
+	cpu_exec(si_count);
 	return 0;
 }
 
