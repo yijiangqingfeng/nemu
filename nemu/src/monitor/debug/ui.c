@@ -81,7 +81,7 @@ static int cmd_x(char *args){
 	int x_cnt_1 = 0;
 	int i_1;	
 	for(i_1 = 0;i_1 < x_tmp_1;i_1++){
-		x_cnt_1 = x_cnt_1 + (args[i_1]-'0');
+		x_cnt_1 = x_cnt_1 + (args_1[i_1]-'0');
 		if(i_1!=x_tmp_1-1){x_cnt_1 = x_cnt_1 * 10;}
 	}	
 	int x_tmp_2 = strlen(args);
@@ -93,8 +93,7 @@ static int cmd_x(char *args){
 	}
 	uint32_t x_tmp;
 	x_tmp = (uint32_t) x_cnt_2;
-	int i;	
-	printf("%d %d\n",x_cnt_1,x_tmp_2);
+	int i;
 	for(i = 0;i < x_cnt_1;i ++){
 		printf("%x\n",swaddr_read(x_tmp+i*4,4));
 	}
