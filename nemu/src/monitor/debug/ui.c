@@ -100,12 +100,12 @@ static int cmd_x(char *args){
 	return 0;
 }
 
-bool* flag;
 static int cmd_p(char* args);
 
 static int cmd_p(char* args){
-	*flag = true;
-	expr(args, flag);
+	uint32_t n;
+	bool flag;
+	n = expr(args, &flag);
 	return 0;
 }
 
