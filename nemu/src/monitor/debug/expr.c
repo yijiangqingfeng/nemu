@@ -100,16 +100,34 @@ static bool make_token(char *e) {
 				break;
 			}
 		}
-
+		
 		if(i == NR_REGEX) {
 			printf("no match at position %d\n%s\n%*.s^\n", position, e, position, "");
 			return false;
 		}
 	}
-
+	printf("%d",nr_token);
 	return true; 
 }
-
+/*
+int eval(int p,int q){
+	if(p>q){
+		panic("Illegal Input.");
+	}else if(p==q){
+		return p;
+	}else if(check_parentheses(p,q) == true){
+		return eval(p+1,q-1);
+	}else {
+		op = 
+		int val1 = eval(p,op-1);
+		int val2 = eval(op+1,q);
+		switch(op_type){
+		case '+' :return val1 + val2;
+		case '-' :return val1 - val2;
+		case '*' :return val1 * val2;
+		case '/' :return val1 / val2;
+	}
+}*/
 uint32_t expr(char *e, bool *success) {
 	if(!make_token(e)) {
 		*success = false;
