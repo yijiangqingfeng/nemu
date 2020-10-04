@@ -100,6 +100,13 @@ static int cmd_x(char *args){
 	return 0;
 }
 
+static int cmd_p(char* args);
+
+static int cmd_p(char* args){
+	cpu_exec(1);
+	return 0;
+}
+
 static struct {
 	char *name;
 	char *description;
@@ -113,6 +120,7 @@ static struct {
 	{"si","si command.",cmd_si },
 	{"info","info command.",cmd_info },
 	{"x","x command.",cmd_x },
+	{"p","p command.",cmd_p},
 };
 
 #define NR_CMD (sizeof(cmd_table) / sizeof(cmd_table[0]))
