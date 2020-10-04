@@ -59,7 +59,7 @@ void init_regex() {
 typedef struct token {
 	int type;
 	char str[32];
-	int p;
+	int priority;
 } Token;
 
 Token tokens[32];
@@ -92,9 +92,10 @@ static bool make_token(char *e) {
 						break;
 					default:
 						tokens[nr_token].type = rules[i].token_type;
-						tokens[nr_token].p = rules[i].priority;
+						tokens[nr_token].priority = rules[i].priority;
 						strncpy(tokens[nr_token].str,substr_start,substr_len);
 						nr_token ++;
+						tokens[nr_token].str[substr_len]='\0';
 				}
 
 				break;
@@ -106,28 +107,66 @@ static bool make_token(char *e) {
 			return false;
 		}
 	}
-	printf("%d",nr_token);
 	return true; 
 }
-/*
+int dominant_operator(int p,int q){
+	int i,j;
+	int min_p = 10;
+	int oper = p;
+	for(i = p;i <= q;i ++){
+		if(tokens[i].type == NUM)continue;
+		int cnt = 0;
+		bool flag = true;
+		for(j = i - 1; j >= p;j --){
+			if(tokens[j].type == '(' && !cnt){flag = false;break;}
+			if(tokens[j].type == ')')cnt++;
+			if(tokens[j].type == '(')cnt--;
+		}
+		if(!flag)continue; 
+		if(tokens[i].priority<min_p){min_p = tokens[i].priority;oper=i;};
+	}
+	return oper;
+}
+bool check_parentheses(int p,int q){
+	int i;
+	if(tokens[p].type == '(' && tokens[q].type == ')'){
+		int l = 0,r = 0;
+		for(i = p;i <= q;i++){
+			if(tokens[i].type == '(')l++;
+			if(tokens[i].type == ')')r++;
+			if(r>=l)return false;
+		}
+		if(r==l)return true;
+	}
+	return false;
+}
 int eval(int p,int q){
 	if(p>q){
-		panic("Illegal Input.");
+		return 0;
 	}else if(p==q){
-		return p;
+		int x_tmp_1 = strlen(tokens[q].str);
+		int x_cnt_1 = 0;
+		int i_1;	
+		for(i_1 = 0;i_1 < x_tmp_1;i_1++){
+			x_cnt_1 = x_cnt_1 + (tokens[q].str[i_1]-'0');
+			if(i_1!=x_tmp_1-1){x_cnt_1 = x_cnt_1 * 10;}
+			}
+		return x_cnt_1;
 	}else if(check_parentheses(p,q) == true){
 		return eval(p+1,q-1);
 	}else {
-		op = 
+		int op = dominant_operator(p,q);
 		int val1 = eval(p,op-1);
 		int val2 = eval(op+1,q);
-		switch(op_type){
+		switch(tokens[op].type){
 		case '+' :return val1 + val2;
 		case '-' :return val1 - val2;
 		case '*' :return val1 * val2;
 		case '/' :return val1 / val2;
+		}
 	}
-}*/
+	return 10086;
+}
 uint32_t expr(char *e, bool *success) {
 	if(!make_token(e)) {
 		*success = false;
@@ -135,8 +174,8 @@ uint32_t expr(char *e, bool *success) {
 	}
 
 	/* TODO: Insert codes to evaluate the expression. */
-
-	panic("please implement me");
-	return 0;
+	
+	//panic("please implement me");
+	return eval(0,nr_token-1);
 }
 
