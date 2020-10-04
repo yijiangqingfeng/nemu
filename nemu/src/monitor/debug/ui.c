@@ -106,7 +106,7 @@ static int cmd_p(char* args){
 	uint32_t n;
 	bool flag;
 	n = expr(args, &flag);
-	printf("%d",n);
+	printf("%d\n",n);
 	return 0;
 }
 
