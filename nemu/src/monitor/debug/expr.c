@@ -134,7 +134,7 @@ bool check_parentheses(int p,int q){
 		for(i = p;i <= q;i++){
 			if(tokens[i].type == '(')l++;
 			if(tokens[i].type == ')')r++;
-			if(r>=l)return false;
+			if(r>l)return false;
 		}
 		if(r==l)return true;
 	}
