@@ -60,14 +60,14 @@ static int cmd_info(char *args);
 
 static int cmd_info(char *args){
 	//if(args == NULL)return 0;
-	printf("eax is %x\n",cpu.eax);
-	printf("ecx is %x\n",cpu.ecx);
-	printf("edx is %x\n",cpu.edx);
-	printf("ebx is %x\n",cpu.ebx);
-	printf("esp is %x\n",cpu.esp);
-	printf("ebp is %x\n",cpu.ebp);
-	printf("esi is %x\n",cpu.esi);
-	printf("edi is %x\n",cpu.edi);
+	printf("eax is 0x%x\n",cpu.eax);
+	printf("ecx is 0x%x\n",cpu.ecx);
+	printf("edx is 0x%x\n",cpu.edx);
+	printf("ebx is 0x%x\n",cpu.ebx);
+	printf("esp is 0x%x\n",cpu.esp);
+	printf("ebp is 0x%x\n",cpu.ebp);
+	printf("esi is 0x%x\n",cpu.esi);
+	printf("edi is 0x%x\n",cpu.edi);
 	return 0;
 }
 
