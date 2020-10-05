@@ -183,6 +183,7 @@ int eval(int p,int q){
 			}
 			return x_cnt_2;
 		}else if(tokens[q].type == REG){
+			printf("ha\n");
 			if(strlen(tokens[q].str) == 3){
 				int k;
 				for(k = R_EAX;k <= R_EDI;k++)if(strcmp(tokens[q].str , regsl[k]) == 0)break;
