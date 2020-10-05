@@ -1,5 +1,4 @@
 #include "nemu.h"
-
 /* We use the POSIX regex functions to process regular expressions.
  * Type 'man regex' for more information about POSIX regex functions.
  */
@@ -183,10 +182,24 @@ int eval(int p,int q){
 			}
 			return x_cnt_2;
 		}else if(tokens[q].type == REG){
+			if(strlen(tokens[q].str) == 3){
+				int k;
+				for(k = R_EAX;k <= R_EDI;k++)if(strcmp(tokens[q].str , regsl[k]) == 0)break;
+				return reg_l(k);
+			}
+			if(strlen(tokens[q].str) == 2){
+				if(tokens[q].str[1] == 'X' ||tokens[q].str[1] == 'x' ||tokens[q].str[1] == 'p' ||tokens[q].str[1] == 'P' ||tokens[q].str[1] == 'I' ||tokens[q].str[1] == 'i'){
+					int k;
+					for(k = R_AX;k <= R_DI;k++)if(strcmp(tokens[q].str , regsw[k]) == 0)break;
+					return reg_w(k);
+				}
+				if(tokens[q].str[1] == 'l' ||tokens[q].str[1] == 'L' ||tokens[q].str[1] == 'H' ||tokens[q].str[1] == 'h'){
+					int k;
+					for(k = R_AL;k <= R_BH;k++)if(strcmp(tokens[q].str , regsb[k]) == 0)break;
+					return reg_b(k);
+				}
 			
-			
-			
-			
+			}
 		}	
 	}else if(check_parentheses(p,q) == true){
 		return eval(p+1,q-1);
