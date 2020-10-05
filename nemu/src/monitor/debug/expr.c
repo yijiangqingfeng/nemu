@@ -165,6 +165,7 @@ int eval(int p,int q){
 		return 0;
 	}else if(p==q){
 		int tmp = strlen(tokens[q].str);
+		printf("%d\n",tmp);
 		if(tokens[q].type == NUM){
 			int x_cnt_1 = 0;
 			int i_1;	
@@ -207,7 +208,6 @@ int eval(int p,int q){
 		int op = dominant_operator(p,q);
 		int val1 = eval(p,op-1);
 		int val2 = eval(op+1,q);
-		printf("%d %d\n",val1,val2);
 		switch(tokens[op].type){
 			case '+' :return val1 + val2;
 			case '-' :return val1 - val2;
