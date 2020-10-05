@@ -219,11 +219,11 @@ uint32_t expr(char *e, bool *success) {
 	int i;
 	/* TODO: Insert codes to evaluate the expression. */
 	for(i = 0;i < nr_token;i ++){
-		if(tokens[i].type == '*' && (i == 0 || (tokens[i-1].type != NUM && tokens[i-1].type != ')' && tokens[i-1].type != REG )) ){
+		if(tokens[i].type == '*' && (i == 0 || (tokens[i-1].type != NUM && tokens[i-1].type != ')' && tokens[i-1].type != REG && tokens[i-1].type != HEX )) ){
 			tokens[i].type = POINTER;
 			tokens[i].priority = 6;
 		}
-		if(tokens[i].type == '-' && (i == 0 || (tokens[i-1].type != NUM && tokens[i-1].type != ')' && tokens[i-1].type != REG )) ){
+		if(tokens[i].type == '-' && (i == 0 || (tokens[i-1].type != NUM && tokens[i-1].type != ')' && tokens[i-1].type != REG && tokens[i-1].type != HEX )) ){
 			tokens[i].type = MINUS;
 			tokens[i].priority = 5;
 		}
