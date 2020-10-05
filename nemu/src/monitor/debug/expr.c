@@ -40,9 +40,9 @@ static struct rule {
 
 	{" +",	NOTYPE,0},				// spaces
 	{"==", EQ,2},						// equal
-	{"[0-9]+",NUM,0},
+	{"\\b[0-9]+\\b",NUM,0},
 	{"\\$[a-zA-Z]+",REG,0},
-	{"0[xX][0-9a-fA-F]+",HEX,0},
+	{"\\b0[xX][0-9a-fA-F]+\\b",HEX,0},
 	{"!=",NEQ,2},
 	{"&&",AND,1},
 	{"\\|\\|",OR,1},
