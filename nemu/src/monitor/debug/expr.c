@@ -105,7 +105,7 @@ static bool make_token(char *e) {
 						break;
 					case REG:
 						tokens[nr_token].type = rules[i].token_type;
-						tokens[nr_token].type = rules[i].priority;
+						tokens[nr_token].priority = rules[i].priority;
 						strncpy(tokens[nr_token].str,substr_start+1,substr_len-1);
 						tokens[nr_token].str[substr_len-1]='\0';
 						nr_token ++;
@@ -165,7 +165,6 @@ int eval(int p,int q){
 		return 0;
 	}else if(p==q){
 		int tmp = strlen(tokens[q].str);
-		printf("ha\n");
 		if(tokens[q].type == NUM){
 			int x_cnt_1 = 0;
 			int i_1;	
@@ -183,7 +182,6 @@ int eval(int p,int q){
 			}
 			return x_cnt_2;
 		}else if(tokens[q].type == REG){
-			printf("ha\n");
 			if(strlen(tokens[q].str) == 3){
 				int k;
 				for(k = R_EAX;k <= R_EDI;k++)if(strcmp(tokens[q].str , regsl[k]) == 0)break;
