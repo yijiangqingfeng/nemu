@@ -10,6 +10,14 @@ enum {
 	NOTYPE = 256, 
 	EQ,
 	NUM,
+	REG,
+	HEX,
+	POINTER,
+	MINUS,
+	NOT,
+	AND,
+	OR,
+	NEQ,
 	/* TODO: Add more token types */
 
 };
@@ -25,14 +33,20 @@ static struct rule {
 	 */
 	{"\\(",'(',7},
 	{"\\)",')',7},
-	{"\\*",'*',6},
-	{"/",'/',6},
-	{"\\+",'+',5},					// plus
-	{"\\-",'-',5},
+	{"\\*",'*',4},
+	{"/",'/',4},
+	{"\\+",'+',3},					// plus
+	{"\\-",'-',3},
 
 	{" +",	NOTYPE,0},				// spaces
-	{"==", EQ,3},						// equal
-	{"[0-9]+",NUM,0}
+	{"==", EQ,2},						// equal
+	{"[0-9]+",NUM,0},
+	{"$[a-zA-Z]+",REG,0},
+	{"0[xX][0-9]+",HEX,0},
+	{"!=",NEQ,2},
+	{"&&",AND,1},
+	{"\\|\\|",OR,1},
+	{"!",NOT,6},
 };
 
 #define NR_REGEX (sizeof(rules) / sizeof(rules[0]) )
@@ -90,6 +104,13 @@ static bool make_token(char *e) {
 				switch(rules[i].token_type) {
 					case NOTYPE:
 						break;
+					case REG:
+						tokens[nr_token].type = rules[i].token_type;
+						tokens[nr_token].type = rules[i].priority;
+						strncpy(tokens[nr_token].str,substr_start+1,substr_len-1);
+						tokens[nr_token].str[substr_len-1]='\0';
+						nr_token ++;
+						break;
 					default:
 						tokens[nr_token].type = rules[i].token_type;
 						tokens[nr_token].priority = rules[i].priority;
@@ -114,7 +135,7 @@ int dominant_operator(int p,int q){
 	int min_p = 10;
 	int oper = p;
 	for(i = p;i <= q;i ++){
-		if(tokens[i].type == NUM)continue;
+		if(tokens[i].type == NUM || tokens[i].type == REG || tokens[i].type == HEX)continue;
 		int cnt = 0;
 		bool flag = true;
 		for(j = i - 1; j >= p;j --){
@@ -144,14 +165,29 @@ int eval(int p,int q){
 	if(p>q){
 		return 0;
 	}else if(p==q){
-		int x_tmp_1 = strlen(tokens[q].str);
-		int x_cnt_1 = 0;
-		int i_1;	
-		for(i_1 = 0;i_1 < x_tmp_1;i_1++){
-			x_cnt_1 = x_cnt_1 + (tokens[q].str[i_1]-'0');
-			if(i_1!=x_tmp_1-1){x_cnt_1 = x_cnt_1 * 10;}
+		int tmp = strlen(tokens[q].str);
+		if(tokens[q].type == NUM){
+			int x_cnt_1 = 0;
+			int i_1;	
+			for(i_1 = 0;i_1 < tmp;i_1++){
+				x_cnt_1 = x_cnt_1 + (tokens[q].str[i_1]-'0');
+				if(i_1!=tmp-1){x_cnt_1 = x_cnt_1 * 10;}
 			}
-		return x_cnt_1;
+			return x_cnt_1;
+		}else if(tokens[q].type == HEX){
+			int x_cnt_2 = 0;
+			int i_2;	
+			for(i_2 = 2;i_2 < tmp;i_2++){
+				x_cnt_2 = x_cnt_2 + (tokens[q].str[i_2]-'0');
+				if(i_2!=tmp-1){x_cnt_2 = x_cnt_2 * 16;}
+			}
+			return x_cnt_2;
+		}else if(tokens[q].type == REG){
+			
+			
+			
+			
+		}	
 	}else if(check_parentheses(p,q) == true){
 		return eval(p+1,q-1);
 	}else {
@@ -159,10 +195,17 @@ int eval(int p,int q){
 		int val1 = eval(p,op-1);
 		int val2 = eval(op+1,q);
 		switch(tokens[op].type){
-		case '+' :return val1 + val2;
-		case '-' :return val1 - val2;
-		case '*' :return val1 * val2;
-		case '/' :return val1 / val2;
+			case '+' :return val1 + val2;
+			case '-' :return val1 - val2;
+			case '*' :return val1 * val2;
+			case '/' :return val1 / val2;
+			case MINUS:return 0 - val2;
+			case POINTER:return swaddr_read((uint32_t)val2,4);
+			case EQ:return val1 == val2;
+			case NEQ:return val1 != val2;
+			case AND:return val1 && val2;
+			case OR:return val1 || val2;
+			case NOT:return !val2;
 		}
 	}
 	return 10086;
@@ -172,9 +215,20 @@ uint32_t expr(char *e, bool *success) {
 		*success = false;
 		return 0;
 	}
-
+	int i;
 	/* TODO: Insert codes to evaluate the expression. */
-	
+	for(i = 0;i < nr_token;i ++){
+		if(tokens[i].type == '*' && (i == 0 || (tokens[i-1].type != NUM && tokens[i-1].type != ')' && tokens[i-1].type != REG )) ){
+			tokens[i].type = POINTER;
+			tokens[i].priority = 6;
+		}
+		if(tokens[i].type == '-' && (i == 0 || (tokens[i-1].type != NUM && tokens[i-1].type != ')' && tokens[i-1].type != REG )) ){
+			tokens[i].type = MINUS;
+			tokens[i].priority = 5;
+		}
+		
+	}
+	*success = true;
 	//panic("please implement me");
 	return eval(0,nr_token-1);
 }
