@@ -165,6 +165,7 @@ int eval(int p,int q){
 		return 0;
 	}else if(p==q){
 		int tmp = strlen(tokens[q].str);
+		printf("ha\n");
 		if(tokens[q].type == NUM){
 			int x_cnt_1 = 0;
 			int i_1;	
@@ -182,10 +183,8 @@ int eval(int p,int q){
 			}
 			return x_cnt_2;
 		}else if(tokens[q].type == REG){
-			printf("%zu\n",strlen(tokens[q].str));
 			if(strlen(tokens[q].str) == 3){
 				int k;
-				printf("%s\n%s\n",tokens[q].str,regsl[4]);
 				for(k = R_EAX;k <= R_EDI;k++)if(strcmp(tokens[q].str , regsl[k]) == 0)break;
 				return reg_l(k);
 			}
