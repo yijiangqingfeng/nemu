@@ -165,6 +165,7 @@ int eval(int p,int q){
 		return 0;
 	}else if(p==q){
 		int tmp = strlen(tokens[q].str);
+		printf("%c%c%c",tokens[q].str[0],tokens[q].str[1],tokens[q].str[2]);
 		if(tokens[q].type == NUM){
 			int x_cnt_1 = 0;
 			int i_1;	
