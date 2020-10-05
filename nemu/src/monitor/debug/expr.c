@@ -182,6 +182,7 @@ int eval(int p,int q){
 			}
 			return x_cnt_2;
 		}else if(tokens[q].type == REG){
+			printf("%zu\n",strlen(tokens[q].str));
 			if(strlen(tokens[q].str) == 3){
 				int k;
 				printf("%s\n%s\n",tokens[q].str,regsl[4]);
