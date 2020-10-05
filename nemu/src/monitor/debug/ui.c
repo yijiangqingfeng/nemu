@@ -77,6 +77,7 @@ static int cmd_x(char *args){
 	if(args==NULL)return 0;
 	char *args_1;
 	args_1 = strtok(args," ");
+	if(args_1==NULL)return 0;
 	args = strtok(NULL," ");
 	int x_tmp_1 = strlen(args_1);
 	int x_cnt_1 = 0;
