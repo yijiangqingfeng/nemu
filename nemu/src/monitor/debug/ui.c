@@ -59,8 +59,7 @@ static int cmd_si(char *args){
 static int cmd_info(char *args);
 
 static int cmd_info(char *args){
-	//if(args == NULL)return 0;
-	if(args == NULL)return 0;
+	if(args==NULL)return 0;
 	if(args[0] == 'r'){
 		printf("eax is 0x%x\n",cpu.eax);
 		printf("ecx is 0x%x\n",cpu.ecx);
@@ -70,6 +69,9 @@ static int cmd_info(char *args){
 		printf("ebp is 0x%x\n",cpu.ebp);
 		printf("esi is 0x%x\n",cpu.esi);
 		printf("edi is 0x%x\n",cpu.edi);
+	}
+	else if(args[0] == 'w'){
+		info_wp();		
 	}
 	return 0;
 }
