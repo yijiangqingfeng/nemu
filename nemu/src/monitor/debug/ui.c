@@ -146,6 +146,12 @@ static int cmd_w(char* args){
 static int cmd_d(char* args);
 
 static int cmd_d(char* args){
+	if(args==NULL)return 0;
+	char *args_1;
+	args_1 = strtok(args," ");
+	if(args_1==NULL)return 0;
+	args = strtok(NULL," ");
+	if(args==NULL)return 0;
 	int num;
 	sscanf(args,"%d",&num);
 	delete_wp(num);
