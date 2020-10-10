@@ -111,6 +111,12 @@ static int cmd_x(char *args){
 static int cmd_p(char* args);
 
 static int cmd_p(char* args){
+	if(args==NULL)return 0;
+	char *args_1;
+	args_1 = strtok(args," ");
+	if(args_1==NULL)return 0;
+	args = strtok(NULL," ");
+	if(args==NULL)return 0;
 	uint32_t n;
 	bool flag;
 	n = expr(args, &flag);
@@ -121,6 +127,12 @@ static int cmd_p(char* args){
 static int cmd_w(char* args);
 
 static int cmd_w(char* args){
+	if(args==NULL)return 0;
+	char *args_1;
+	args_1 = strtok(args," ");
+	if(args_1==NULL)return 0;
+	args = strtok(NULL," ");
+	if(args==NULL)return 0;
 	WP* p;
 	bool suc;
 	p = new_wp();
