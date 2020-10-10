@@ -93,4 +93,7 @@ bool check(){
 	}
 	return flag;
 }
-
+bool checkNull(){
+	if(head == NULL)return true;
+	return false;
+}
