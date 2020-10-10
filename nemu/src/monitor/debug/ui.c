@@ -118,6 +118,27 @@ static int cmd_p(char* args){
 	return 0;
 }
 
+static int cmd_w(char* args);
+
+static int cmd_w(char* args){
+	WP* p;
+	bool suc;
+	p = new_wp();
+	printf("Watchpoint %d: %s\n",p -> NO,args);
+	p -> val = expr(args,&suc);
+	strcpy(p -> expr,args);
+	printf("Value : %d\n",p -> val);
+	return 0;
+}
+
+static int cmd_d(char* args);
+
+static int cmd_d(char* args){
+	int num;
+	sscanf(args,"%d",&num);
+	delete_wp(num);
+	return 0;
+}
 static struct {
 	char *name;
 	char *description;
@@ -132,6 +153,8 @@ static struct {
 	{"info","info command.",cmd_info },
 	{"x","x command.",cmd_x },
 	{"p","p command.",cmd_p},
+	{"w","w command.",cmd_w},
+	{"d","d command.",cmd_d},
 };
 
 #define NR_CMD (sizeof(cmd_table) / sizeof(cmd_table[0]))
