@@ -65,6 +65,9 @@ void delete_wp(int n){
 void info_wp(){
 	WP* p;
 	p = head;
+	if(checkNull()){
+		printf("No watchpoint.");
+	}
 	while(p!=NULL){
 		printf("Watchpoint %d: %s = %d\n",p->NO,p->expr,p->val);
 		p = p -> next;

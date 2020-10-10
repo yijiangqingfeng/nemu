@@ -133,9 +133,6 @@ static int cmd_w(char* args){
 	if(args_1==NULL)return 0;
 	args = strtok(NULL," ");
 	if(args==NULL)return 0;
-	if(checkNull()){
-		printf("No watchpoint.");
-	}
 	WP* p;
 	bool suc;
 	p = new_wp();
