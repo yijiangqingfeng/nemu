@@ -92,23 +92,7 @@ static int cmd_x(char *args){
 	uint32_t x_cnt_2;
 	bool flag2;
 	x_cnt_2 = expr(args, &flag2);
-	/*int x_tmp_1 = strlen(args_1);
-	int x_cnt_1 = 0;
-	int i_1;	
-	for(i_1 = 0;i_1 < x_tmp_1;i_1++){
-		x_cnt_1 = x_cnt_1 + (args_1[i_1]-'0');
-		if(i_1!=x_tmp_1-1){x_cnt_1 = x_cnt_1 * 10;}
-	}	
-	int x_tmp_2 = strlen(args);
-	int x_cnt_2 = 0;
-	int i_2;	
-	for(i_2 = 2;i_2 < x_tmp_2;i_2++){
-		x_cnt_2 = x_cnt_2 + (args[i_2]-'0');
-		if(i_2!=x_tmp_2-1){x_cnt_2 = x_cnt_2 * 16;}
-	}
-	uint32_t x_tmp;
-	x_tmp = (uint32_t) x_cnt_2;
-	*/
+	
 	int i;
 	for(i = 0;i < x_cnt_1;i ++){
 		printf("%x\n",swaddr_read(x_cnt_2+i*4,4));
