@@ -66,7 +66,7 @@ void info_wp(){
 	WP* p;
 	p = head;
 	if(checkNull()){
-		printf("No watchpoint.");
+		printf("No watchpoint.\n");
 	}
 	while(p!=NULL){
 		printf("Watchpoint %d: %s = %d\n",p->NO,p->expr,p->val);
