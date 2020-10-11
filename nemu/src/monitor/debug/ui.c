@@ -85,7 +85,14 @@ static int cmd_x(char *args){
 	if(args_1==NULL)return 0;
 	args = strtok(NULL," ");
 	if(args==NULL)return 0;
-	int x_tmp_1 = strlen(args_1);
+	uint32_t x_cnt_1;
+	bool flag1;
+	x_cnt_1 = expr(args_1, &flag1);
+
+	uint32_t x_cnt_2;
+	bool flag2;
+	x_cnt_2 = expr(args, &flag2);
+	/*int x_tmp_1 = strlen(args_1);
 	int x_cnt_1 = 0;
 	int i_1;	
 	for(i_1 = 0;i_1 < x_tmp_1;i_1++){
@@ -101,9 +108,10 @@ static int cmd_x(char *args){
 	}
 	uint32_t x_tmp;
 	x_tmp = (uint32_t) x_cnt_2;
+	*/
 	int i;
 	for(i = 0;i < x_cnt_1;i ++){
-		printf("%x\n",swaddr_read(x_tmp+i*4,4));
+		printf("%x\n",swaddr_read(x_cnt_2+i*4,4));
 	}
 	return 0;
 }
