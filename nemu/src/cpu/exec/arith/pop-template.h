@@ -10,7 +10,7 @@ static void do_execute(){
 	}else{
 		OPERAND_W(op_src,MEM_R(REG(R_ESP)));
 		MEM_W(REG(R_ESP),0);
-		reg_l (R_ESP) += 4;
+		reg_l (R_ESP) += DATA_BYTE;
 	}
 	print_asm_no_template1();
 }
