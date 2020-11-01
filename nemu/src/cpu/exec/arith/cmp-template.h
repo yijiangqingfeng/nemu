@@ -18,7 +18,7 @@ static void do_execute(){
 	cpu.PF = !(rst & 1);
 	print_asm_no_template2();
 }
-
+#if DATA_BYTE == 2 || DATA_BYTE == 4
 make_instr_helper(i2rm)
-
+#endif
 #include "cpu/exec/template-end.h"
