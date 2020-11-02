@@ -2,12 +2,17 @@
 
 #define instr jmp
 
-make_helper(concat(jmp_i_, SUFFIX)){
-    int len = concat(decode_i_, SUFFIX)(cpu.eip + 1);
-    DATA_TYPE_S imm = op_src -> val;
-    print_asm("jmp\t%x",cpu.eip+1+len+imm);
-    cpu.eip += imm;
-    return len + 1;
+static void do_execute(){
+	DATA_TYPE_S imm = op_src -> val;
+	if(op_src -> type == OP_TYPE_REG || op_src -> type == OP_TYPE_MEM)
+	{
+		cpu.eip = imm - concat ( decode_rm_,SUFFIX)(cpu.eip+1)-1;
+		print_asm_no_template1();
+	}else{
+		print_asm("jmp\t%x",cpu.eip+1+DATA_BYTE+imm);
+		cpu.eip+=imm;
+	}
 }
-
+make_instr_helper(i)
+make_instr_helper(rm)
 #include "cpu/exec/template-end.h"
