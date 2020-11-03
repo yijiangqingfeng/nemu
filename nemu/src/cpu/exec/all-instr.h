@@ -25,6 +25,8 @@
 #include "arith/jbe.h"
 #include "arith/adc.h"
 #include "arith/add.h"
+#include "arith/sbb.h"
+#include "arith/setne.h"
 
 #include "logic/and.h"
 #include "logic/or.h"

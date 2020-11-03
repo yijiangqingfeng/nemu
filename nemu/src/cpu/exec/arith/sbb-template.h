@@ -1,11 +1,13 @@
 #include "cpu/exec/template-start.h"
 
-#define instr sub
+#define instr sbb
 
 static void do_execute(){
+	DATA_TYPE src = op_src -> val;
 	if(op_src -> size == 1 && op_dest -> size != 1)
 	op_src -> val = (int8_t) op_src -> val;
-	DATA_TYPE rst = op_dest -> val - op_src -> val;
+	src += cpu.CF;
+	DATA_TYPE rst = op_dest -> val - src;
 	int len = (DATA_BYTE << 3) -1;
 	cpu.CF = op_dest -> val < op_src -> val;
 	cpu.SF = rst >> len;
