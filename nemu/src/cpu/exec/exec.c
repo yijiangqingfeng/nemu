@@ -237,5 +237,6 @@ static make_helper(_2byte_esc) {
 	cpu.eip ++;
 	uint32_t opcode = instr_fetch(eip, 1);
 	ops_decoded.opcode = opcode | 0x100;
+	eip --;
 	return _2byte_opcode_table[opcode](eip+1); 
 }
