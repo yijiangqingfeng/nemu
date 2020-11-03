@@ -24,6 +24,7 @@
 #include "arith/jmp.h"
 #include "arith/jbe.h"
 #include "arith/adc.h"
+#include "arith/add.h"
 
 #include "logic/and.h"
 #include "logic/or.h"
