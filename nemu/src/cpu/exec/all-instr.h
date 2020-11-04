@@ -32,6 +32,7 @@
 #include "arith/jg.h"
 #include "arith/jl.h"
 #include "arith/sete.h"
+#include "arith/jge.h"
 
 #include "logic/and.h"
 #include "logic/or.h"
