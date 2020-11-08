@@ -26,7 +26,7 @@ static void do_execute(){
 		DATA_TYPE rst = reg_w(R_AX)-reg_w(R_DI);
 		//swaddr_write(reg_l(R_EAX),4,swaddr_read(reg_l(R_EDI),4));
 		int len = (DATA_BYTE << 3) -1;
-		cpu.CF = op_dest -> val < op_src -> val;
+		cpu.CF = reg_w(R_AX)<reg_w(R_DI);
 		cpu.SF = rst >> len;
 		int s1,s2;
 		s1 = op_dest -> val >> len;
