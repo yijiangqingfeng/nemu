@@ -4,7 +4,7 @@
 
 static void do_execute(){
 	if(ops_decoded.is_stack_size_16){
-		DATA_TYPE rst = reg_w(R_AX)-reg_w(R_DI);
+		DATA_TYPE rst = reg_w(R_AL)-swaddr_read(reg_l(R_EDI),4);
 		//int len = (DATA_BYTE << 3) -1;
 		//cpu.CF = op_dest -> val < op_src -> val;
 		//cpu.SF = rst >> len;
@@ -23,10 +23,10 @@ static void do_execute(){
 			reg_w(R_DI)-=DATA_BYTE;
 		}
 	}else{
-		DATA_TYPE rst = reg_l(R_EAX)-reg_l(R_EDI);
+		DATA_TYPE rst = reg_l(R_AL)-swaddr_read(reg_l(R_EDI),4);
 		//swaddr_write(reg_l(R_EAX),4,swaddr_read(reg_l(R_EDI),4));
 		//int len = (DATA_BYTE << 3) -1;
-		cpu.CF = reg_l(R_EAX)<reg_l(R_EDI);
+		//cpu.CF = reg_l(R_EAX)<reg_l(R_EDI);
 		//cpu.SF = rst >> len;
 		//int s1,s2;
 		//s1 = op_dest -> val >> len;
