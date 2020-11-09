@@ -21,7 +21,7 @@ static void do_execute(){
 	if(s % 2)cpu.PF = 0;
 	else cpu.PF = 1;
 	if(((op_dest->val&0xf)-(op_src->val &0xf))>>4)cpu.AF=1;
-	else cpu.ZF=0;
+	else cpu.AF=0;
 }
 make_instr_helper(n)
 #include "cpu/exec/template-end.h"
