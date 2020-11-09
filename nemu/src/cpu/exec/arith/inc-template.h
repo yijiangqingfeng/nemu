@@ -5,10 +5,13 @@
 static void do_execute () {
 	DATA_TYPE result = op_src->val + 1;
 	int len = (DATA_BYTE << 3)-1;
-	cpu.OF=(result < op_dest->val);
+	cpu.CF=op_src->val >result;
 	cpu.SF=result>>len;
 	cpu.ZF=!result;
 	OPERAND_W(op_src, result);
+	int s1=0;
+	int s2=MSB(op_src->val);
+	cpu.OF=(s1==s2)&&(cpu.SF != s2);
 	result^=result >>4;
 	result^=result >>2;
 	result^=result >>1;
