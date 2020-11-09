@@ -3,7 +3,7 @@
 #define instr pop
 
 static void do_execute(){
-	OPERAND_W(op_src,MEM_R(REG(R_ESP)));
+	OPERAND_W(op_src,MEM_R(reg_l(R_ESP)));
 	reg_l(R_ESP) += DATA_BYTE;
 	/*
 	if(DATA_BYTE == 1){
