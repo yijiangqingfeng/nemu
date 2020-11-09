@@ -37,6 +37,8 @@
 #include "arith/sete.h"
 #include "arith/jge.h"
 #include "arith/ja.h"
+#include "arith/js.h"
+#include "arith/jns.h"
 
 #include "logic/and.h"
 #include "logic/or.h"
