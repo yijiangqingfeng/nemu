@@ -6,13 +6,13 @@ static void do_execute () {
 	DATA_TYPE result = op_src->val + 1;
 	OPERAND_W(op_src, result);
 	int len = (DATA_BYTE << 3)-1;
-	cpu.CF=op_src->val >result;
+	//cpu.CF=op_src->val >result;
 	cpu.SF=result>>len;
 	cpu.ZF=!result;
-	int s1=0;
+	//int s1=0;
 	//int s2=op_src->val>>len;
-	int s2 = op_src->val >> len;
-	cpu.OF=(s1==s2)&&(cpu.SF != s2);
+	//int s2 = op_src->val >> len;
+	cpu.OF=op_src->val >result;
 	result^=result >>4;
 	result^=result >>2;
 	result^=result >>1;
