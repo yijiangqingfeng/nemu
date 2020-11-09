@@ -10,6 +10,7 @@ static void do_execute(){
 	else reg_l(R_EDI) -= DATA_BYTE;
 	print_asm("scas");
 	if(dest<src)cpu.CF=1;
+	else cpu.CF=0;
 	int a = op_dest -> val >> (DATA_BYTE*8-1);
 	int b = op_src -> val >> (DATA_BYTE*8-1);
 	cpu.OF=(a!=b)&&(b==cpu.SF);
