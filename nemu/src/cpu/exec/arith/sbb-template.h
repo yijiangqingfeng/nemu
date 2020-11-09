@@ -8,6 +8,7 @@ static void do_execute(){
 	op_src -> val = (int8_t) op_src -> val;
 	src += cpu.CF;
 	DATA_TYPE rst = op_dest -> val - src;
+	OPERAND_W(op_dest,rst);
 	int len = (DATA_BYTE << 3) -1;
 	cpu.CF = op_dest -> val < op_src -> val;
 	cpu.SF = rst >> len;
@@ -16,7 +17,6 @@ static void do_execute(){
 	s2 = op_src -> val >> len;
 	cpu.OF = (s1!=s2 && s2 == cpu.SF);
 	cpu.ZF = !rst;
-	OPERAND_W(op_dest,rst);
 	rst ^= rst >> 4;
 	rst ^= rst >> 2;
 	rst ^= rst >> 1;
