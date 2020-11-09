@@ -1,0 +1,50 @@
+
+obj/testcase/string:     file format elf32-i386
+
+
+Disassembly of section .text:
+
+00100000 <_start>:
+  100000:	bd 00 00 00 00       	mov    $0x0,%ebp
+  100005:	bc f0 ff ff 07       	mov    $0x7fffff0,%esp
+  10000a:	e8 06 00 00 00       	call   100015 <main>
+  10000f:	b8 00 00 00 00       	mov    $0x0,%eax
+  100014:	d6                   	(bad)  
+
+00100015 <main>:
+  100015:	55                   	push   %ebp
+  100016:	89 e5                	mov    %esp,%ebp
+  100018:	83 e4 f0             	and    $0xfffffff0,%esp
+  10001b:	83 ec 10             	sub    $0x10,%esp
+  10001e:	a1 1c 01 10 00       	mov    0x10011c,%eax
+  100023:	8d 50 03             	lea    0x3(%eax),%edx
+  100026:	a1 18 01 10 00       	mov    0x100118,%eax
+  10002b:	83 c0 03             	add    $0x3,%eax
+  10002e:	89 54 24 04          	mov    %edx,0x4(%esp)
+  100032:	89 04 24             	mov    %eax,(%esp)
+  100035:	e8 12 00 00 00       	call   10004c <__GI_strcmp>
+  10003a:	83 f8 ff             	cmp    $0xffffffff,%eax
+  10003d:	74 06                	je     100045 <main+0x30>
+  10003f:	b8 01 00 00 00       	mov    $0x1,%eax
+  100044:	d6                   	(bad)  
+  100045:	b8 00 00 00 00       	mov    $0x0,%eax
+  10004a:	c9                   	leave  
+  10004b:	c3                   	ret    
+
+0010004c <__GI_strcmp>:
+  10004c:	57                   	push   %edi
+  10004d:	56                   	push   %esi
+  10004e:	8b 74 24 0c          	mov    0xc(%esp),%esi
+  100052:	8b 7c 24 10          	mov    0x10(%esp),%edi
+  100056:	ac                   	lods   %ds:(%esi),%al
+  100057:	ae                   	scas   %es:(%edi),%al
+  100058:	75 08                	jne    100062 <__GI_strcmp+0x16>
+  10005a:	84 c0                	test   %al,%al
+  10005c:	75 f8                	jne    100056 <__GI_strcmp+0xa>
+  10005e:	31 c0                	xor    %eax,%eax
+  100060:	eb 04                	jmp    100066 <__GI_strcmp+0x1a>
+  100062:	19 c0                	sbb    %eax,%eax
+  100064:	0c 01                	or     $0x1,%al
+  100066:	5e                   	pop    %esi
+  100067:	5f                   	pop    %edi
+  100068:	c3                   	ret    
