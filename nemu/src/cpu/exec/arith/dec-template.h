@@ -4,6 +4,7 @@
 
 static void do_execute () {
 	DATA_TYPE result = op_src->val - 1;
+	OPERAND_W(op_src, result);
 	int len = (DATA_BYTE << 3) - 1;
 	cpu.CF = op_src -> val < 1;
 	cpu.SF = result >>len;
@@ -12,7 +13,6 @@ static void do_execute () {
 	s2=0;
 	cpu.OF=(s1!=s2&&s2==cpu.SF);
 	cpu.ZF=!result;
-	OPERAND_W(op_src, result);
 	result^=result >>4;
 	result^=result >>2;
 	result^=result >>1;
