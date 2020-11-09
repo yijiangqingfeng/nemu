@@ -10,7 +10,8 @@ static void do_execute () {
 	cpu.ZF=!result;
 	OPERAND_W(op_src, result);
 	int s1=0;
-	int s2=op_src->val>>len;
+	//int s2=op_src->val>>len;
+	int s2 = MSB(op_src->val);
 	cpu.OF=(s1==s2)&&(cpu.SF != s2);
 	result^=result >>4;
 	result^=result >>2;
