@@ -2,7 +2,7 @@
 
 #define instr movs
 
-static void do_execute(){
+make_helper(concat(movs_,SUFFIX)){
 	swaddr_write(reg_l(R_EDI),DATA_BYTE,MEM_R(reg_l(R_ESI)));
 	if(cpu.DF==0){
 		reg_l(R_EDI)+=DATA_BYTE;
@@ -12,6 +12,7 @@ static void do_execute(){
 		reg_l(R_ESI)-=DATA_BYTE;
 	}
 	print_asm("movs");
+	return 1;
 }
-make_instr_helper(n)
+
 #include "cpu/exec/template-end.h"
