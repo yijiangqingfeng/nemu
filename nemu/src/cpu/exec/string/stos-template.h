@@ -3,7 +3,7 @@
 #define instr stos
 
 static void do_execute(){
-	swaddr_write(reg_l(R_EDI),DATA_BYTE,swaddr_read(REG(R_EAX),4));
+	swaddr_write(reg_l(R_EDI),DATA_BYTE,swaddr_read(REG(R_EAX),DATA_BYTE));
 	if(cpu.DF==0){
 		reg_l(R_EDI)+=DATA_BYTE;
 	}else{
