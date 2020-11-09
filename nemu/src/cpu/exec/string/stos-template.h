@@ -3,21 +3,13 @@
 #define instr stos
 
 static void do_execute(){
-	if(ops_decoded.is_stack_size_16){
-		swaddr_write(reg_w(R_DI),2,swaddr_read(reg_w(R_AX),4));
-		if(cpu.DF==0){
-			reg_w(R_DI)+=DATA_BYTE;
-		}else{
-			reg_w(R_DI)-=DATA_BYTE;
-		}
+	swaddr_write(reg_l(R_DI),DATA_BYTE,swaddr_read(REG(R_EAX),DATA_BYTE));
+	if(cpu.DF==0){
+		reg_l(R_EDI)+=DATA_BYTE;
 	}else{
-		swaddr_write(reg_l(R_EDI),4,swaddr_read(reg_l(R_EAX),4));
-		if(cpu.DF==0){
-			reg_l(R_EDI)+=DATA_BYTE;
-		}else{
-			reg_l(R_EDI)-=DATA_BYTE;
-		}
+		reg_l(R_EDI)-=DATA_BYTE;
 	}
+	//swaddr_write(reg_l(R_EDI),4,swaddr_read(reg_l(R_EAX),4));
 	print_asm("stos");
 }
 make_instr_helper(n)
