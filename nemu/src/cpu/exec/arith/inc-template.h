@@ -4,11 +4,11 @@
 
 static void do_execute () {
 	DATA_TYPE result = op_src->val + 1;
+	OPERAND_W(op_src, result);
 	int len = (DATA_BYTE << 3)-1;
 	cpu.CF=op_src->val >result;
 	cpu.SF=result>>len;
 	cpu.ZF=!result;
-	OPERAND_W(op_src, result);
 	int s1=0;
 	//int s2=op_src->val>>len;
 	int s2 = MSB(op_src->val);
