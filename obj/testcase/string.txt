@@ -15,58 +15,115 @@ Disassembly of section .text:
   100015:	55                   	push   %ebp
   100016:	89 e5                	mov    %esp,%ebp
   100018:	83 e4 f0             	and    $0xfffffff0,%esp
-  10001b:	83 ec 10             	sub    $0x10,%esp
-  10001e:	a1 68 01 10 00       	mov    0x100168,%eax
-  100023:	8d 50 01             	lea    0x1(%eax),%edx
-  100026:	a1 64 01 10 00       	mov    0x100164,%eax
-  10002b:	83 c0 01             	add    $0x1,%eax
-  10002e:	89 54 24 04          	mov    %edx,0x4(%esp)
-  100032:	89 04 24             	mov    %eax,(%esp)
-  100035:	e8 60 00 00 00       	call   10009a <__GI_strcmp>
-  10003a:	83 f8 ff             	cmp    $0xffffffff,%eax
-  10003d:	74 06                	je     100045 <main+0x30>
-  10003f:	b8 01 00 00 00       	mov    $0x1,%eax
-  100044:	d6                   	(bad)  
-  100045:	a1 68 01 10 00       	mov    0x100168,%eax
-  10004a:	8d 50 02             	lea    0x2(%eax),%edx
-  10004d:	a1 64 01 10 00       	mov    0x100164,%eax
-  100052:	83 c0 02             	add    $0x2,%eax
-  100055:	89 54 24 04          	mov    %edx,0x4(%esp)
-  100059:	89 04 24             	mov    %eax,(%esp)
-  10005c:	e8 39 00 00 00       	call   10009a <__GI_strcmp>
-  100061:	83 f8 ff             	cmp    $0xffffffff,%eax
-  100064:	74 06                	je     10006c <main+0x57>
-  100066:	b8 01 00 00 00       	mov    $0x1,%eax
-  10006b:	d6                   	(bad)  
-  10006c:	a1 68 01 10 00       	mov    0x100168,%eax
-  100071:	8d 50 03             	lea    0x3(%eax),%edx
-  100074:	a1 64 01 10 00       	mov    0x100164,%eax
-  100079:	83 c0 03             	add    $0x3,%eax
-  10007c:	89 54 24 04          	mov    %edx,0x4(%esp)
-  100080:	89 04 24             	mov    %eax,(%esp)
-  100083:	e8 12 00 00 00       	call   10009a <__GI_strcmp>
-  100088:	83 f8 ff             	cmp    $0xffffffff,%eax
-  10008b:	74 06                	je     100093 <main+0x7e>
-  10008d:	b8 01 00 00 00       	mov    $0x1,%eax
-  100092:	d6                   	(bad)  
-  100093:	b8 00 00 00 00       	mov    $0x0,%eax
-  100098:	c9                   	leave  
-  100099:	c3                   	ret    
+  10001b:	56                   	push   %esi
+  10001c:	53                   	push   %ebx
+  10001d:	83 ec 18             	sub    $0x18,%esp
+  100020:	a1 34 02 10 00       	mov    0x100234,%eax
+  100025:	8d 50 01             	lea    0x1(%eax),%edx
+  100028:	a1 30 02 10 00       	mov    0x100230,%eax
+  10002d:	83 c0 01             	add    $0x1,%eax
+  100030:	89 54 24 04          	mov    %edx,0x4(%esp)
+  100034:	89 04 24             	mov    %eax,(%esp)
+  100037:	e8 ca 00 00 00       	call   100106 <__GI_strcmp>
+  10003c:	83 f8 ff             	cmp    $0xffffffff,%eax
+  10003f:	74 06                	je     100047 <main+0x32>
+  100041:	b8 01 00 00 00       	mov    $0x1,%eax
+  100046:	d6                   	(bad)  
+  100047:	a1 34 02 10 00       	mov    0x100234,%eax
+  10004c:	8d 50 02             	lea    0x2(%eax),%edx
+  10004f:	a1 30 02 10 00       	mov    0x100230,%eax
+  100054:	83 c0 02             	add    $0x2,%eax
+  100057:	89 54 24 04          	mov    %edx,0x4(%esp)
+  10005b:	89 04 24             	mov    %eax,(%esp)
+  10005e:	e8 a3 00 00 00       	call   100106 <__GI_strcmp>
+  100063:	83 f8 ff             	cmp    $0xffffffff,%eax
+  100066:	74 06                	je     10006e <main+0x59>
+  100068:	b8 01 00 00 00       	mov    $0x1,%eax
+  10006d:	d6                   	(bad)  
+  10006e:	a1 34 02 10 00       	mov    0x100234,%eax
+  100073:	8d 50 03             	lea    0x3(%eax),%edx
+  100076:	a1 30 02 10 00       	mov    0x100230,%eax
+  10007b:	83 c0 03             	add    $0x3,%eax
+  10007e:	89 54 24 04          	mov    %edx,0x4(%esp)
+  100082:	89 04 24             	mov    %eax,(%esp)
+  100085:	e8 7c 00 00 00       	call   100106 <__GI_strcmp>
+  10008a:	83 f8 ff             	cmp    $0xffffffff,%eax
+  10008d:	74 06                	je     100095 <main+0x80>
+  10008f:	b8 01 00 00 00       	mov    $0x1,%eax
+  100094:	d6                   	(bad)  
+  100095:	8b 1d 40 02 10 00    	mov    0x100240,%ebx
+  10009b:	a1 3c 02 10 00       	mov    0x10023c,%eax
+  1000a0:	89 c6                	mov    %eax,%esi
+  1000a2:	b8 48 02 10 00       	mov    $0x100248,%eax
+  1000a7:	89 44 24 04          	mov    %eax,0x4(%esp)
+  1000ab:	c7 04 24 4e 02 10 00 	movl   $0x10024e,(%esp)
+  1000b2:	e8 6c 00 00 00       	call   100123 <__GI_strcpy>
+  1000b7:	89 74 24 04          	mov    %esi,0x4(%esp)
+  1000bb:	89 04 24             	mov    %eax,(%esp)
+  1000be:	e8 24 00 00 00       	call   1000e7 <__GI_strcat>
+  1000c3:	89 5c 24 04          	mov    %ebx,0x4(%esp)
+  1000c7:	89 04 24             	mov    %eax,(%esp)
+  1000ca:	e8 37 00 00 00       	call   100106 <__GI_strcmp>
+  1000cf:	85 c0                	test   %eax,%eax
+  1000d1:	74 06                	je     1000d9 <main+0xc4>
+  1000d3:	b8 01 00 00 00       	mov    $0x1,%eax
+  1000d8:	d6                   	(bad)  
+  1000d9:	b8 00 00 00 00       	mov    $0x0,%eax
+  1000de:	83 c4 18             	add    $0x18,%esp
+  1000e1:	5b                   	pop    %ebx
+  1000e2:	5e                   	pop    %esi
+  1000e3:	89 ec                	mov    %ebp,%esp
+  1000e5:	5d                   	pop    %ebp
+  1000e6:	c3                   	ret    
 
-0010009a <__GI_strcmp>:
-  10009a:	57                   	push   %edi
-  10009b:	56                   	push   %esi
-  10009c:	8b 74 24 0c          	mov    0xc(%esp),%esi
-  1000a0:	8b 7c 24 10          	mov    0x10(%esp),%edi
-  1000a4:	ac                   	lods   %ds:(%esi),%al
-  1000a5:	ae                   	scas   %es:(%edi),%al
-  1000a6:	75 08                	jne    1000b0 <__GI_strcmp+0x16>
-  1000a8:	84 c0                	test   %al,%al
-  1000aa:	75 f8                	jne    1000a4 <__GI_strcmp+0xa>
-  1000ac:	31 c0                	xor    %eax,%eax
-  1000ae:	eb 04                	jmp    1000b4 <__GI_strcmp+0x1a>
-  1000b0:	19 c0                	sbb    %eax,%eax
-  1000b2:	0c 01                	or     $0x1,%al
-  1000b4:	5e                   	pop    %esi
-  1000b5:	5f                   	pop    %edi
-  1000b6:	c3                   	ret    
+001000e7 <__GI_strcat>:
+  1000e7:	57                   	push   %edi
+  1000e8:	56                   	push   %esi
+  1000e9:	31 c0                	xor    %eax,%eax
+  1000eb:	8b 54 24 0c          	mov    0xc(%esp),%edx
+  1000ef:	8b 74 24 10          	mov    0x10(%esp),%esi
+  1000f3:	83 c9 ff             	or     $0xffffffff,%ecx
+  1000f6:	89 d7                	mov    %edx,%edi
+  1000f8:	f2 ae                	repnz scas %es:(%edi),%al
+  1000fa:	4f                   	dec    %edi
+  1000fb:	ac                   	lods   %ds:(%esi),%al
+  1000fc:	aa                   	stos   %al,%es:(%edi)
+  1000fd:	84 c0                	test   %al,%al
+  1000ff:	75 fa                	jne    1000fb <__GI_strcat+0x14>
+  100101:	89 d0                	mov    %edx,%eax
+  100103:	5e                   	pop    %esi
+  100104:	5f                   	pop    %edi
+  100105:	c3                   	ret    
+
+00100106 <__GI_strcmp>:
+  100106:	57                   	push   %edi
+  100107:	56                   	push   %esi
+  100108:	8b 74 24 0c          	mov    0xc(%esp),%esi
+  10010c:	8b 7c 24 10          	mov    0x10(%esp),%edi
+  100110:	ac                   	lods   %ds:(%esi),%al
+  100111:	ae                   	scas   %es:(%edi),%al
+  100112:	75 08                	jne    10011c <__GI_strcmp+0x16>
+  100114:	84 c0                	test   %al,%al
+  100116:	75 f8                	jne    100110 <__GI_strcmp+0xa>
+  100118:	31 c0                	xor    %eax,%eax
+  10011a:	eb 04                	jmp    100120 <__GI_strcmp+0x1a>
+  10011c:	19 c0                	sbb    %eax,%eax
+  10011e:	0c 01                	or     $0x1,%al
+  100120:	5e                   	pop    %esi
+  100121:	5f                   	pop    %edi
+  100122:	c3                   	ret    
+
+00100123 <__GI_strcpy>:
+  100123:	57                   	push   %edi
+  100124:	56                   	push   %esi
+  100125:	8b 54 24 0c          	mov    0xc(%esp),%edx
+  100129:	8b 74 24 10          	mov    0x10(%esp),%esi
+  10012d:	89 d7                	mov    %edx,%edi
+  10012f:	ac                   	lods   %ds:(%esi),%al
+  100130:	aa                   	stos   %al,%es:(%edi)
+  100131:	84 c0                	test   %al,%al
+  100133:	75 fa                	jne    10012f <__GI_strcpy+0xc>
+  100135:	89 d0                	mov    %edx,%eax
+  100137:	5e                   	pop    %esi
+  100138:	5f                   	pop    %edi
+  100139:	c3                   	ret    
