@@ -39,6 +39,8 @@
 #include "arith/ja.h"
 #include "arith/js.h"
 #include "arith/jns.h"
+#include "arith/jae.h"
+#include "arith/jb.h"
 
 #include "logic/and.h"
 #include "logic/or.h"

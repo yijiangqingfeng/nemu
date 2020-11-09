@@ -3,8 +3,6 @@
 #define instr sub
 
 static void do_execute(){
-	if(op_src -> size == 1 && op_dest -> size != 1)
-	op_src -> val = (int8_t) op_src -> val;
 	DATA_TYPE rst = op_dest -> val - op_src -> val;
 	OPERAND_W(op_dest,rst);
 	int len = (DATA_BYTE << 3) -1;

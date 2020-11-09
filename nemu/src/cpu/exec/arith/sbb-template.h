@@ -6,7 +6,6 @@ static void do_execute(){
 	DATA_TYPE src = op_src -> val;
 	if(op_src -> size == 1 && op_dest -> size != 1)
 	op_src -> val = (int8_t) op_src -> val;
-	src += cpu.CF;
 	DATA_TYPE rst = op_dest -> val - src;
 	OPERAND_W(op_dest,rst);
 	int len = (DATA_BYTE << 3) -1;

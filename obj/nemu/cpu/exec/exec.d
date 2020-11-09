@@ -23,6 +23,7 @@ obj/nemu/cpu/exec/exec.o: nemu/src/cpu/exec/exec.c \
  nemu/src/cpu/exec/arith/jl.h nemu/src/cpu/exec/arith/sete.h \
  nemu/src/cpu/exec/arith/jge.h nemu/src/cpu/exec/arith/ja.h \
  nemu/src/cpu/exec/arith/js.h nemu/src/cpu/exec/arith/jns.h \
+ nemu/src/cpu/exec/arith/jae.h nemu/src/cpu/exec/arith/jb.h \
  nemu/src/cpu/exec/logic/and.h nemu/src/cpu/exec/logic/or.h \
  nemu/src/cpu/exec/logic/not.h nemu/src/cpu/exec/logic/xor.h \
  nemu/src/cpu/exec/logic/sar.h nemu/src/cpu/exec/logic/shl.h \
