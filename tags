@@ -902,6 +902,30 @@ DATA_BYTE	nemu/src/cpu/exec/logic/xor.c	3;"	d	file:
 DATA_BYTE	nemu/src/cpu/exec/logic/xor.c	5;"	d	file:
 DATA_BYTE	nemu/src/cpu/exec/logic/xor.c	7;"	d	file:
 DATA_BYTE	nemu/src/cpu/exec/logic/xor.c	9;"	d	file:
+DATA_BYTE	nemu/src/cpu/exec/string/lods.c	11;"	d	file:
+DATA_BYTE	nemu/src/cpu/exec/string/lods.c	13;"	d	file:
+DATA_BYTE	nemu/src/cpu/exec/string/lods.c	3;"	d	file:
+DATA_BYTE	nemu/src/cpu/exec/string/lods.c	5;"	d	file:
+DATA_BYTE	nemu/src/cpu/exec/string/lods.c	7;"	d	file:
+DATA_BYTE	nemu/src/cpu/exec/string/lods.c	9;"	d	file:
+DATA_BYTE	nemu/src/cpu/exec/string/movs.c	11;"	d	file:
+DATA_BYTE	nemu/src/cpu/exec/string/movs.c	13;"	d	file:
+DATA_BYTE	nemu/src/cpu/exec/string/movs.c	3;"	d	file:
+DATA_BYTE	nemu/src/cpu/exec/string/movs.c	5;"	d	file:
+DATA_BYTE	nemu/src/cpu/exec/string/movs.c	7;"	d	file:
+DATA_BYTE	nemu/src/cpu/exec/string/movs.c	9;"	d	file:
+DATA_BYTE	nemu/src/cpu/exec/string/scas.c	11;"	d	file:
+DATA_BYTE	nemu/src/cpu/exec/string/scas.c	13;"	d	file:
+DATA_BYTE	nemu/src/cpu/exec/string/scas.c	3;"	d	file:
+DATA_BYTE	nemu/src/cpu/exec/string/scas.c	5;"	d	file:
+DATA_BYTE	nemu/src/cpu/exec/string/scas.c	7;"	d	file:
+DATA_BYTE	nemu/src/cpu/exec/string/scas.c	9;"	d	file:
+DATA_BYTE	nemu/src/cpu/exec/string/stos.c	11;"	d	file:
+DATA_BYTE	nemu/src/cpu/exec/string/stos.c	13;"	d	file:
+DATA_BYTE	nemu/src/cpu/exec/string/stos.c	3;"	d	file:
+DATA_BYTE	nemu/src/cpu/exec/string/stos.c	5;"	d	file:
+DATA_BYTE	nemu/src/cpu/exec/string/stos.c	7;"	d	file:
+DATA_BYTE	nemu/src/cpu/exec/string/stos.c	9;"	d	file:
 DATA_PROTECT	lib-common/uclibc/include/scsi/scsi.h	131;"	d
 DATA_TYPE	nemu/include/cpu/exec/template-end.h	2;"	d
 DATA_TYPE	nemu/include/cpu/exec/template-start.h	12;"	d
@@ -7764,7 +7788,7 @@ UNKNOWN_REQUEST	lib-common/uclibc/include/protocols/talkd.h	101;"	d
 UPAGES	lib-common/uclibc/include/sys/user.h	97;"	d
 UPDATE_BLOCK	lib-common/uclibc/include/scsi/scsi.h	79;"	d
 UPDATE_PER_SECOND	game/src/typing/game.c	8;"	d	file:
-USERPROG	Makefile	/^USERPROG := obj\/testcase\/matrix-mul-small$/;"	m
+USERPROG	Makefile	/^USERPROG := obj\/testcase\/hello-str$/;"	m
 USER_PROCESS	lib-common/uclibc/include/bits/utmp.h	110;"	d
 USE_RAMDISK	nemu/include/common.h	4;"	d
 USHORT	game/src/nemu-pal/include/_common.h	/^typedef unsigned short      USHORT, *PUSHORT;$/;"	t
@@ -9529,6 +9553,7 @@ __LITTLE_ENDIAN	lib-common/uclibc/include/endian.h	32;"	d
 __LOCALE_C_ONLY	lib-common/uclibc/include/bits/uClibc_locale.h	38;"	d
 __LOCALE_C_ONLY	lib-common/uclibc/include/bits/uClibc_locale.h	42;"	d
 __LOCK_INITIALIZER	lib-common/uclibc/include/bits/initspin.h	26;"	d
+__LODS_H__	nemu/src/cpu/exec/string/lods.h	2;"	d
 __LONG_LONG_PAIR	lib-common/uclibc/include/endian.h	53;"	d
 __LONG_LONG_PAIR	lib-common/uclibc/include/endian.h	55;"	d
 __LT_SPINLOCK_INIT	lib-common/uclibc/include/bits/initspin.h	23;"	d
@@ -9598,6 +9623,7 @@ __MON_DECIMAL_POINT	lib-common/uclibc/include/langinfo.h	/^  __MON_DECIMAL_POINT
 __MON_GROUPING	lib-common/uclibc/include/langinfo.h	/^  __MON_GROUPING,$/;"	e	enum:__anon32
 __MON_THOUSANDS_SEP	lib-common/uclibc/include/langinfo.h	/^  __MON_THOUSANDS_SEP,$/;"	e	enum:__anon32
 __MOVEXT_H__	nemu/src/cpu/exec/data-mov/movext.h	2;"	d
+__MOVS_H__	nemu/src/cpu/exec/string/movs.h	2;"	d
 __MOV_H__	nemu/src/cpu/exec/data-mov/mov.h	2;"	d
 __MULTILIB_DIR__	lib-common/uclibc/include/bits/uClibc_config.h	198;"	d
 __MUL_H__	nemu/src/cpu/exec/arith/mul.h	2;"	d
@@ -10397,6 +10423,7 @@ __S64_TYPE	lib-common/uclibc/include/bits/types.h	115;"	d
 __S64_TYPE	lib-common/uclibc/include/bits/types.h	127;"	d
 __SAR_H__	nemu/src/cpu/exec/logic/sar.h	2;"	d
 __SBB_H__	nemu/src/cpu/exec/arith/sbb.h	2;"	d
+__SCAS_H__	nemu/src/cpu/exec/string/scas.h	2;"	d
 __SDL_H__	nemu/src/device/sdl.h	2;"	d
 __SETE_H__	nemu/src/cpu/exec/arith/sete.h	2;"	d
 __SETNE_H__	nemu/src/cpu/exec/arith/setne.h	2;"	d
@@ -10471,6 +10498,7 @@ __STDIO_fpos_t	lib-common/uclibc/include/bits/uClibc_stdio.h	/^} __STDIO_fpos_t;
 __STD_TYPE	lib-common/uclibc/include/bits/types.h	119;"	d
 __STD_TYPE	lib-common/uclibc/include/bits/types.h	130;"	d
 __STD_TYPE	lib-common/uclibc/include/bits/types.h	198;"	d
+__STOS_H__	nemu/src/cpu/exec/string/stos.h	2;"	d
 __STRING	lib-common/uclibc/include/sys/cdefs.h	81;"	d
 __SUB_H__	nemu/src/cpu/exec/arith/sub.h	2;"	d
 __SUSECONDS_T_TYPE	lib-common/uclibc/include/bits/typesizes.h	52;"	d
@@ -12009,7 +12037,7 @@ concat	nemu/src/cpu/decode/decode-template.h	/^static int concat(decode_a_, SUFF
 concat	nemu/src/cpu/decode/decode-template.h	/^void concat(write_operand_, SUFFIX) (Operand *op, DATA_TYPE src) {$/;"	f
 concat	nemu/src/cpu/exec/arith/imul-template.h	/^make_helper(concat(imul_rm2a_, SUFFIX)) {$/;"	f
 concat	nemu/src/cpu/exec/arith/imul-template.h	/^make_helper(concat(imul_rm2r_, SUFFIX)) {$/;"	f
-concat	nemu/src/cpu/exec/arith/je-template.h	/^make_helper(concat(je_i_,SUFFIX)){$/;"	f
+concat	nemu/src/cpu/exec/arith/ret-template.h	/^make_helper(concat(ret_i_,SUFFIX)){$/;"	f
 concat	nemu/src/cpu/exec/arith/ret-template.h	/^make_helper(concat(ret_n_,SUFFIX)){$/;"	f
 concat	nemu/src/cpu/exec/data-mov/call-template.h	/^make_helper(concat(call_i_, SUFFIX)){$/;"	f
 concat	nemu/src/cpu/exec/data-mov/cltd-template.h	/^make_helper(concat(cltd_, SUFFIX)) {$/;"	f
@@ -12022,6 +12050,8 @@ concat	nemu/src/cpu/exec/data-mov/movext-template.h	/^make_helper(concat(movzb_,
 concat	nemu/src/cpu/exec/data-mov/movext-template.h	/^make_helper(concat(movzw_, SUFFIX)) {$/;"	f
 concat	nemu/src/cpu/exec/data-mov/xchg-template.h	/^make_helper(concat(xchg_a2r_, SUFFIX)) {$/;"	f
 concat	nemu/src/cpu/exec/logic/shrd-template.h	/^make_helper(concat(shrdi_, SUFFIX)) {$/;"	f
+concat	nemu/src/cpu/exec/string/lods-template.h	/^make_helper(concat(lods_n_,SUFFIX)){$/;"	f
+concat	nemu/src/cpu/exec/string/stos-template.h	/^make_helper(concat(stos_n_,SUFFIX)){$/;"	f
 concat3	nemu/include/macro.h	9;"	d
 concat3	nemu/src/cpu/decode/decode-template.h	/^static int concat3(decode_r_, SUFFIX, _internal) (swaddr_t eip, Operand *op) {$/;"	f
 concat3	nemu/src/cpu/decode/decode-template.h	/^static int concat3(decode_rm_, SUFFIX, _internal) (swaddr_t eip, Operand *rm, Operand *reg) {$/;"	f
@@ -12225,6 +12255,7 @@ do_execute	nemu/src/cpu/exec/arith/imul-template.h	/^static void do_execute() {$
 do_execute	nemu/src/cpu/exec/arith/inc-template.h	/^static void do_execute () {$/;"	f
 do_execute	nemu/src/cpu/exec/arith/ja-template.h	/^static void do_execute(){$/;"	f
 do_execute	nemu/src/cpu/exec/arith/jbe-template.h	/^static void do_execute(){$/;"	f
+do_execute	nemu/src/cpu/exec/arith/je-template.h	/^static void do_execute(){$/;"	f
 do_execute	nemu/src/cpu/exec/arith/jg-template.h	/^static void do_execute(){$/;"	f
 do_execute	nemu/src/cpu/exec/arith/jge-template.h	/^static void do_execute(){$/;"	f
 do_execute	nemu/src/cpu/exec/arith/jl-template.h	/^static void do_execute(){$/;"	f
@@ -12250,6 +12281,8 @@ do_execute	nemu/src/cpu/exec/logic/shl-template.h	/^static void do_execute () {$
 do_execute	nemu/src/cpu/exec/logic/shr-template.h	/^static void do_execute () {$/;"	f
 do_execute	nemu/src/cpu/exec/logic/shrd-template.h	/^static void do_execute () {$/;"	f
 do_execute	nemu/src/cpu/exec/logic/xor-template.h	/^static void do_execute () {$/;"	f
+do_execute	nemu/src/cpu/exec/string/movs-template.h	/^static void do_execute(){$/;"	f
+do_execute	nemu/src/cpu/exec/string/scas-template.h	/^static void do_execute(){$/;"	f
 do_i8259	nemu/src/device/i8259.c	/^static void do_i8259() {$/;"	f	file:
 do_int3	nemu/src/monitor/cpu-exec.c	/^void do_int3() {$/;"	f
 do_syscall	kernel/src/syscall/do_syscall.c	/^void do_syscall(TrapFrame *tf) {$/;"	f
@@ -13124,6 +13157,10 @@ instr	nemu/src/cpu/exec/logic/shl-template.h	3;"	d
 instr	nemu/src/cpu/exec/logic/shr-template.h	3;"	d
 instr	nemu/src/cpu/exec/logic/shrd-template.h	3;"	d
 instr	nemu/src/cpu/exec/logic/xor-template.h	3;"	d
+instr	nemu/src/cpu/exec/string/lods-template.h	3;"	d
+instr	nemu/src/cpu/exec/string/movs-template.h	3;"	d
+instr	nemu/src/cpu/exec/string/scas-template.h	3;"	d
+instr	nemu/src/cpu/exec/string/stos-template.h	3;"	d
 instr_fetch	nemu/include/cpu/helper.h	/^static inline uint32_t instr_fetch(swaddr_t addr, size_t len) {$/;"	f
 insw	lib-common/uclibc/include/sys/io.h	/^insw (unsigned short int port, void *addr, unsigned long int count)$/;"	f
 int16_t	lib-common/uclibc/include/stdint.h	/^typedef short int		int16_t;$/;"	t
@@ -13255,6 +13292,7 @@ is_leap_year	testcase/src/leap-year.c	/^int is_leap_year(int n) {$/;"	f
 is_mmio	nemu/src/device/io/mmio.c	/^int is_mmio(hwaddr_t addr) {$/;"	f
 is_operand_size_16	nemu/include/cpu/decode/operand.h	/^	bool is_operand_size_16;$/;"	m	struct:__anon211
 is_prime	testcase/src/gotbaha.c	/^int is_prime(int n) {$/;"	f
+is_stack_size_16	nemu/include/cpu/decode/operand.h	/^	bool is_stack_size_16;$/;"	m	struct:__anon211
 isclr	lib-common/uclibc/include/sys/param.h	58;"	d
 isfinite	lib-common/uclibc/include/math.h	264;"	d
 isfinite	lib-common/uclibc/include/math.h	267;"	d
@@ -13317,6 +13355,7 @@ jbe_i_b	nemu/src/cpu/exec/arith/jbe.h	/^make_helper(jbe_i_b);$/;"	v
 jbe_i_v	nemu/src/cpu/exec/arith/jbe.h	/^make_helper(jbe_i_v);$/;"	v
 jbuf	nemu/src/monitor/cpu-exec.c	/^jmp_buf jbuf;$/;"	v
 je_i_b	nemu/src/cpu/exec/arith/je.h	/^make_helper(je_i_b);$/;"	v
+je_i_v	nemu/src/cpu/exec/arith/je.h	/^make_helper(je_i_v);$/;"	v
 jg_i	nemu/src/cpu/exec/arith/jg.c	/^make_helper_v(jg_i);$/;"	v
 jg_i_b	nemu/src/cpu/exec/arith/jg.h	/^make_helper(jg_i_b);$/;"	v
 jg_i_v	nemu/src/cpu/exec/arith/jg.h	/^make_helper(jg_i_v);$/;"	v
@@ -13572,6 +13611,8 @@ loads	lib-common/uclibc/include/sys/sysinfo.h	/^	unsigned long loads[3];		\/* 1,
 locale_t	lib-common/uclibc/include/locale.h	/^typedef __locale_t locale_t;$/;"	t
 lockf	lib-common/uclibc/include/fcntl.h	175;"	d
 lockf	lib-common/uclibc/include/unistd.h	1061;"	d
+lods_n_b	nemu/src/cpu/exec/string/lods.h	/^make_helper(lods_n_b);$/;"	v
+lods_n_v	nemu/src/cpu/exec/string/lods.h	/^make_helper(lods_n_v);$/;"	v
 loff_t	lib-common/uclibc/include/sys/types.h	/^typedef __loff_t loff_t;$/;"	t
 log	lib-common/uclibc/include/tgmath.h	274;"	d
 log10	lib-common/uclibc/include/tgmath.h	278;"	d
@@ -13774,6 +13815,8 @@ mov_r2rm_b	nemu/src/cpu/exec/data-mov/mov.h	/^make_helper(mov_r2rm_b);$/;"	v
 mov_r2rm_v	nemu/src/cpu/exec/data-mov/mov.h	/^make_helper(mov_r2rm_v);$/;"	v
 mov_rm2r_b	nemu/src/cpu/exec/data-mov/mov.h	/^make_helper(mov_rm2r_b);$/;"	v
 mov_rm2r_v	nemu/src/cpu/exec/data-mov/mov.h	/^make_helper(mov_rm2r_v);$/;"	v
+movs_n_b	nemu/src/cpu/exec/string/movs.h	/^make_helper(movs_n_b);$/;"	v
+movs_n_v	nemu/src/cpu/exec/string/movs.h	/^make_helper(movs_n_v);$/;"	v
 movsb_v	nemu/src/cpu/exec/data-mov/movext.h	/^make_helper(movsb_v);$/;"	v
 movsw_l	nemu/src/cpu/exec/data-mov/movext.h	/^make_helper(movsw_l);$/;"	v
 movzb_v	nemu/src/cpu/exec/data-mov/movext.h	/^make_helper(movzb_v);$/;"	v
@@ -14621,6 +14664,8 @@ reserved	lib-common/uclibc/include/sys/user.h	/^  long int reserved;$/;"	m	struc
 resid	lib-common/uclibc/include/scsi/sg.h	/^  int resid;                  \/* [o] dxfer_len - actual_transferred *\/$/;"	m	struct:sg_io_hdr
 restart	nemu/src/monitor/monitor.c	/^void restart() {$/;"	f
 result	lib-common/uclibc/include/scsi/sg.h	/^   int result;$/;"	m	struct:sg_header
+ret_i_b	nemu/src/cpu/exec/arith/ret.h	/^make_helper(ret_i_b);$/;"	v
+ret_i_v	nemu/src/cpu/exec/arith/ret.h	/^make_helper(ret_i_v);$/;"	v
 ret_n_b	nemu/src/cpu/exec/arith/ret.h	/^make_helper(ret_n_b);$/;"	v
 ret_n_v	nemu/src/cpu/exec/arith/ret.h	/^make_helper(ret_n_v);$/;"	v
 retrans	lib-common/uclibc/include/resolv.h	/^	u_int8_t retrans;		\/* (was: int) retransmission time interval *\/$/;"	m	struct:__res_state
@@ -14851,6 +14896,8 @@ scalbln	lib-common/uclibc/include/tgmath.h	389;"	d
 scalbn	lib-common/uclibc/include/tgmath.h	386;"	d
 scan_watchpoint	nemu/src/monitor/debug/watchpoint.c	/^WP* scan_watchpoint() {$/;"	f
 scandir	lib-common/uclibc/include/dirent.h	268;"	d
+scas_n_b	nemu/src/cpu/exec/string/scas.h	/^make_helper(scas_n_b);$/;"	v
+scas_n_v	nemu/src/cpu/exec/string/scas.h	/^make_helper(scas_n_v);$/;"	v
 sched_param	lib-common/uclibc/include/bits/sched.h	/^struct sched_param$/;"	s
 sched_priority	lib-common/uclibc/include/sched.h	37;"	d
 screen	nemu/src/device/sdl.c	/^SDL_Surface *screen;$/;"	v
@@ -15245,6 +15292,8 @@ stdin	lib-common/uclibc/include/stdio.h	139;"	d
 stdout	lib-common/uclibc/include/stdio.h	140;"	d
 sti	game/include/x86.h	/^sti(void) {$/;"	f
 sti	kernel/include/x86/cpu.h	/^sti(void) {$/;"	f
+stos_n_b	nemu/src/cpu/exec/string/stos.h	/^make_helper(stos_n_b);$/;"	v
+stos_n_v	nemu/src/cpu/exec/string/stos.h	/^make_helper(stos_n_v);$/;"	v
 str	nemu/include/cpu/decode/operand.h	/^	char str[OP_STR_SIZE];$/;"	m	struct:__anon209
 str	nemu/include/macro.h	5;"	d
 str	nemu/src/monitor/debug/expr.c	/^	char str[32];$/;"	m	struct:token	file:
