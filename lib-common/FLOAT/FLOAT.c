@@ -2,7 +2,8 @@
 
 FLOAT F_mul_F(FLOAT a, FLOAT b) {
 	nemu_assert(0);
-	return 0;
+	long long c = (long long )a * (long long)b;
+	return FLOAT(c >> 16);
 }
 
 FLOAT F_div_F(FLOAT a, FLOAT b) {
@@ -25,7 +26,19 @@ FLOAT F_div_F(FLOAT a, FLOAT b) {
 	 */
 
 	nemu_assert(0);
-	return 0;
+	int sign = 1;
+	int res;
+	if(a < 0) a*=-1,sign*=-1;
+	if(b < 0) b*=-1,sign*=-1;
+	res = a/b;
+	a=a%b;
+	int i =1;
+	for(i = 0;i < 16;i++){
+		a <<= 1;
+		res <<= 1;
+		if(a>=b)a-=b,res++;
+	}
+	return (FLOAT)(res*sign);
 }
 
 FLOAT f2F(float a) {
@@ -40,12 +53,19 @@ FLOAT f2F(float a) {
 	 */
 
 	nemu_assert(0);
-	return 0;
+	int b = *(int *)(&a);
+	int sign = b >> 31;
+	int exp = (b >> 23) & 0xff;
+	FLOAT c = b & 0x7fffff;
+	if(exp!=0)c += 1 << 23;
+	if(exp < -16)c >>= -16-exp;
+	if(exp > -16)c <<= exp + 16;
+	return (sign==0)? c : -c;
 }
 
 FLOAT Fabs(FLOAT a) {
 	nemu_assert(0);
-	return 0;
+	return ( a > 0 ? a : -a );
 }
 
 /* Functions below are already implemented */
