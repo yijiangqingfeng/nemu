@@ -7,22 +7,22 @@ typedef int FLOAT;
 
 static inline int F2int(FLOAT a) {
 	int ret = a & 0xffff0000;
-	nemu_assert(0);
+	//nemu_assert(0);
 	return ret >> 16;
 }
 
 static inline FLOAT int2F(int a) {
-	nemu_assert(0);
+	//nemu_assert(0);
 	return a << 16;
 }
 
 static inline FLOAT F_mul_int(FLOAT a, int b) {
-	nemu_assert(0);
+	//nemu_assert(0);
 	return a * b ;
 }
 
 static inline FLOAT F_div_int(FLOAT a, int b) {
-	nemu_assert(0);
+	//nemu_assert(0);
 	return a / b;
 }
 

@@ -1,7 +1,7 @@
 #include "FLOAT.h"
 
 FLOAT F_mul_F(FLOAT a, FLOAT b) {
-	nemu_assert(0);
+	//nemu_assert(0);
 	long long c = (long long )a * (long long)b;
 	return (FLOAT)(c >> 16);
 }
@@ -25,7 +25,7 @@ FLOAT F_div_F(FLOAT a, FLOAT b) {
 	 * out another way to perform the division.
 	 */
 
-	nemu_assert(0);
+	//nemu_assert(0);
 	int sign = 1;
 	int res;
 	if(a < 0) a*=-1,sign*=-1;
@@ -52,7 +52,7 @@ FLOAT f2F(float a) {
 	 * performing arithmetic operations on it directly?
 	 */
 
-	nemu_assert(0);
+	//nemu_assert(0);
 	int b = *(int *)(&a);
 	int sign = b >> 31;
 	int exp = (b >> 23) & 0xff;
@@ -64,7 +64,7 @@ FLOAT f2F(float a) {
 }
 
 FLOAT Fabs(FLOAT a) {
-	nemu_assert(0);
+	//nemu_assert(0);
 	return ( a > 0 ? a : -a );
 }
 
