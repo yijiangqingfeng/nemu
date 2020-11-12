@@ -184,7 +184,7 @@ static uint32_t eval(int s, int e, bool *success) {
 		// single token
 		uint32_t val;
 		//bool* suc;
-		*suc = true;
+		//*suc = true;
 		switch(tokens[s].type) {
 			case REG: val = get_reg_val(tokens[s].str + 1, success);	// +1 to skip '$'
 					  if(!*success) { return 0; }
@@ -210,7 +210,7 @@ static uint32_t eval(int s, int e, bool *success) {
 				}*/
 				val = getValue(tokens[s].str,suc);
 				printf("\n%x\n",val);
-				if(*suc==false)return 0;
+				if(*suc == false)return 0;
 				break;
 			default: assert(0);
 		}
