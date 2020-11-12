@@ -38,7 +38,7 @@ uint32_t loader() {
 	/* Load each program segment */
 	//panic("please implement me");
 	int i = 0;
-	ph = (void *)(elf + elf->e_phoff);
+	ph = (void *)(buf + elf->e_phoff);
 	for(;i < elf -> e_phnum;i++ ) {
 		/* Scan the program header table, load each segment into memory */
 		if(ph->p_type == PT_LOAD) {
@@ -52,7 +52,7 @@ uint32_t loader() {
 			 * [VirtAddr + FileSiz, VirtAddr + MemSiz)
 			 */
 			memset((void *)(ph->p_vaddr+ph->p_filesz),0,ph->p_memsz-ph->p_filesz);
-			ph++;
+			
 #ifdef IA32_PAGE
 			/* Record the program break for future use. */
 			extern uint32_t cur_brk, max_brk;
@@ -60,6 +60,7 @@ uint32_t loader() {
 			if(cur_brk < new_brk) { max_brk = cur_brk = new_brk; }
 #endif
 		}
+		ph++;
 	}
 
 	volatile uint32_t entry = elf->e_entry;
