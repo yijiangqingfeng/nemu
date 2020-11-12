@@ -8,6 +8,21 @@ static char *strtab = NULL;
 static Elf32_Sym *symtab = NULL;
 static int nr_symtab_entry;
 
+uint32_t getValue(char* str,bool* success){
+	int tmp2;
+	for(tmp2 = 0;tmp2 < nr_symtab_entry;tmp2++){
+		if(symtab[tmp2].st_info==STT_OBJECT){
+			char a[32];
+			int tmp_len = strlen(str);
+			strncpy(a,strtab + symtab[tmp2].st_name,tmp_len);
+			a[tmp_len] = '\0';
+			if(strcmp(a,str)==0)return symtab[tmp2].st_value;
+		}
+	}
+	*success = false;
+	return 0;
+}
+
 void load_elf_tables(int argc, char *argv[]) {
 	int ret;
 	Assert(argc == 2, "run NEMU with format 'nemu [program]'");

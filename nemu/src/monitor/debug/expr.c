@@ -11,7 +11,7 @@ enum {
 	NOTYPE = 256, EQ
 
 	/* TODO: Add more token types */
-        , NUM, NEQ, OR, AND, REG, REF, NEG
+        , NUM, NEQ, OR, AND, REG, REF, NEG, VAR
 };
 
 static struct rule {
@@ -38,7 +38,8 @@ static struct rule {
 	{"\\|\\|", OR},
 	{"!", '!'},
 	{"\\(", '('},
-	{"\\)", ')'} 
+	{"\\)", ')'},
+	{"\\b[a-zA-Z0-9_]+\\b",VAR} 
 };
 
 #define NR_REGEX (sizeof(rules) / sizeof(rules[0]) )
@@ -171,7 +172,7 @@ static int find_dominated_op(int s, int e, bool *success) {
 }
 
 uint32_t get_reg_val(const char*, bool *);
-
+uint32_t getValue(char* str,bool* success);
 static uint32_t eval(int s, int e, bool *success) {
 	if(s > e) {
 		// bad expression
@@ -181,13 +182,33 @@ static uint32_t eval(int s, int e, bool *success) {
 	else if(s == e) {
 		// single token
 		uint32_t val;
+		//bool* suc;
+		//*suc = true;
 		switch(tokens[s].type) {
 			case REG: val = get_reg_val(tokens[s].str + 1, success);	// +1 to skip '$'
 					  if(!*success) { return 0; }
 					  break;
 
 			case NUM: val = strtol(tokens[s].str, NULL, 0); break;
-
+			case VAR: 
+				/*int tmp1;
+				for(tmp1 = 0;tmp1 < sh.size;tmp1++){
+					if(sh[tmp1].sh_name==SHT_STRTAB){
+						val = sh[tmp1].sh_offset;
+					}
+				}
+				int tmp2;
+				for(tmp2 = 0;tmp2 < nr_symtab_entry;tmp2++){
+					if(symtab[tmp2].st_info==STT_OBJECT){
+						char a[32];
+						int tmp_len = strlen(tokens[s].str);
+						strncpy(a,strtab + symtab[tmp2].st_name,tmp_len);
+						a[tmp_len] = '\0';
+						if(strcmp(a,tokens[k].str)==0)val = symtab[tmp2].st_value;
+					}
+				}*/
+				val = getValue(tokens[s].str,success);
+				if(*success==false)return 0;
 			default: assert(0);
 		}
 
