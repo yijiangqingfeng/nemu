@@ -32,7 +32,7 @@ FLOAT F_div_F(FLOAT a, FLOAT b) {
 	if(b < 0) b=-b,sign*=-1;
 	res = a/b;
 	a=a%b;
-	int i =1;
+	int i;
 	for(i = 0;i < 16;i++){
 		a <<= 1;
 		res <<= 1;
@@ -58,6 +58,7 @@ FLOAT f2F(float a) {
 	int exp = (b >> 23) & 0xff;
 	FLOAT c = b & 0x7fffff;
 	if(exp!=0)c += 1 << 23;
+	exp-=150;
 	if(exp < -16)c >>= -16-exp;
 	if(exp > -16)c <<= exp + 16;
 	return (sign==0)? c : -c;
