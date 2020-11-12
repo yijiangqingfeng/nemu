@@ -14,7 +14,7 @@ uint32_t getValue(char* str,bool* success){
 		if(symtab[tmp2].st_info==STT_OBJECT){
 			char a[32];
 			int tmp_len = strlen(str);
-			strncpy(a,strtab + symtab[tmp2].st_name,tmp_len);
+			strncpy(a,strtab + symtab[tmp2].st_name+1,tmp_len);
 			a[tmp_len] = '\0';
 			if(strcmp(a,str)==0)return symtab[tmp2].st_value;
 		}
