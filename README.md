@@ -1,6 +1,5 @@
 # ICS2016 Programming Assignment
 
-
 This project is the programming assignment of the class ICS(Introduction to Computer System) in Department of Computer Science and Technology, NanJing University.
 
 For the guide of this programming assignment, refer to http://nju-ics.gitbooks.io/ics2016-programming-assignment/content/
