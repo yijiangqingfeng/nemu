@@ -171,7 +171,7 @@ static int find_dominated_op(int s, int e, bool *success) {
 	*success = (dominated_op != -1);
 	return dominated_op;
 }
-
+bool* suc;
 uint32_t get_reg_val(const char*, bool *);
 uint32_t getValue(char* str,bool* success);
 static uint32_t eval(int s, int e, bool *success) {
@@ -208,8 +208,8 @@ static uint32_t eval(int s, int e, bool *success) {
 						if(strcmp(a,tokens[k].str)==0)val = symtab[tmp2].st_value;
 					}
 				}*/
-				val = getValue(tokens[s].str,success);
-				if(*success==false)return 0;
+				val = getValue(tokens[s].str,suc);
+				if(*suc==false)return 0;
 			default: assert(0);
 		}
 
