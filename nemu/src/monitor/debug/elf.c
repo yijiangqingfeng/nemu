@@ -16,7 +16,8 @@ uint32_t getValue(char* str,bool* success){
 			int tmp_len = strlen(str);
 			strncpy(a,strtab + symtab[tmp2].st_name,tmp_len);
 			a[tmp_len] = '\0';
-			printf("\n%s\n",a);
+			int b = strcmp(a,str)==0;
+			printf("\n%d\n",b);
 			if(strcmp(a,str)==0)return symtab[tmp2].st_value;
 		}
 	}
