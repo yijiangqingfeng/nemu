@@ -58,10 +58,11 @@ Disassembly of section .text:
   1000a3:	8b 45 f0             	mov    -0x10(%ebp),%eax
   1000a6:	83 f8 07             	cmp    $0x7,%eax
   1000a9:	76 9e                	jbe    100049 <main+0x1d>
-  1000ab:	83 7d fc 40          	cmpl   $0x40,-0x4(%ebp)
-  1000af:	74 06                	je     1000b7 <main+0x8b>
-  1000b1:	b8 01 00 00 00       	mov    $0x1,%eax
-  1000b6:	d6                   	(bad)  
-  1000b7:	b8 00 00 00 00       	mov    $0x0,%eax
-  1000bc:	c9                   	leave  
-  1000bd:	c3                   	ret    
+  1000ab:	cc                   	int3   
+  1000ac:	83 7d fc 40          	cmpl   $0x40,-0x4(%ebp)
+  1000b0:	74 06                	je     1000b8 <main+0x8c>
+  1000b2:	b8 01 00 00 00       	mov    $0x1,%eax
+  1000b7:	d6                   	(bad)  
+  1000b8:	b8 00 00 00 00       	mov    $0x0,%eax
+  1000bd:	c9                   	leave  
+  1000be:	c3                   	ret    
