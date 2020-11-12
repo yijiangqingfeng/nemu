@@ -208,6 +208,7 @@ static uint32_t eval(int s, int e, bool *success) {
 						if(strcmp(a,tokens[k].str)==0)val = symtab[tmp2].st_value;
 					}
 				}*/
+				printf("\n%x\n",val);
 				val = getValue(tokens[s].str,suc);
 				printf("\n%x\n",val);
 				if(*suc==false)return 0;
