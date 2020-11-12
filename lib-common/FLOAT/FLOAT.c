@@ -28,8 +28,8 @@ FLOAT F_div_F(FLOAT a, FLOAT b) {
 	//nemu_assert(0);
 	int sign = 1;
 	int res;
-	if(a < 0) a*=-1,sign*=-1;
-	if(b < 0) b*=-1,sign*=-1;
+	if(a < 0) a=-a,sign*=-1;
+	if(b < 0) b=-b,sign*=-1;
 	res = a/b;
 	a=a%b;
 	int i =1;
