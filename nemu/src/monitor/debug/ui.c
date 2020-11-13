@@ -87,6 +87,10 @@ static int cmd_x(char *args) {
 	return 0;
 }
 
+//static int cmt_bt(char *args){
+//	return 0;
+//}
+
 /* Add expression evaluation  */
 static int cmd_p(char *args) {
 	bool success;
@@ -146,7 +150,8 @@ static struct {
 	{ "x", "Examine memory", cmd_x },
         { "p", "Evaluate the value of expression", cmd_p },
 	{ "w", "Set watchpoint", cmd_w },
-	{ "d", "Delete watchpoint", cmd_d }
+	{ "d", "Delete watchpoint", cmd_d },
+	//{ "bt", "Print the stack-frame chain", cmd_bt}
 
 };
 
