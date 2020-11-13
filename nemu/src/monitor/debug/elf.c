@@ -23,7 +23,7 @@ uint32_t getValue(char* str,bool* success){
 	*success = false;
 	return 0;
 }
-/*
+
 uint32_t getFuncName(){
 	int tmp1;
 	for(tmp1 = 0;tmp1 < nr_symtab_entry;tmp1++){
@@ -31,7 +31,7 @@ uint32_t getFuncName(){
 		
 	}
 	return 0;
-}*/
+}
 void load_elf_tables(int argc, char *argv[]) {
 	int ret;
 	Assert(argc == 2, "run NEMU with format 'nemu [program]'");
