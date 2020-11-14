@@ -18,7 +18,24 @@ __attribute__((used)) static int format_FLOAT(FILE *stream, FLOAT f) {
 	 */
 
 	char buf[80];
-	int len = sprintf(buf, "0x%08x", f);
+	int op = (f >> 31) & 0x1;
+	if(op)f = (~f) + 1;
+	int frac = 0;
+	int i;
+	int base = 100000000;
+	for(i = 15;i >= 0;i --){
+		base >>= 1;
+		if(f & (1 << i)){
+			frac += base;
+		}
+	}
+	int num = f >> 16;
+	int len = 0;
+	while(frac > 999999)frac /= 10;
+	if(op)len = sprintf(buf,"-%d.%06d",num,frac);
+	else len = sprintf(buf,"%d.%06d",num,frac);
+	
+	//int len = sprintf(buf, "0x%08x", f);
 	return __stdio_fwrite(buf, len, stream);
 }
 
@@ -104,7 +121,16 @@ static void modify_ppfs_setargs() {
 	 * Below is the code section in _vfprintf_internal() relative to
 	 * the modification.
 	 */
-
+	int addr = (int)(&_ppfs_setargs);//0x80490d3
+	char* hijack = (char*)(addr + 0x71);//0x8049144
+	*hijack = 0xeb;//jmp
+	
+	hijack = (char*)(addr + 0x72);//0x8049145
+	*hijack = 0x30;//imm
+	
+	hijack = (char*)(addr + 0x73);//0x8049146
+	*hijack = 0x90;//nop
+	
 #if 0
 	enum {                          /* C type: */
 		PA_INT,                       /* int */
