@@ -24,7 +24,7 @@ uint32_t getValue(char* str,bool* success){
 	return 0;
 }
 
-void getFuncName(uint32_t arg,char* name){
+void getFuncName(swaddr_t arg,char* name){
 	int tmp1;
 	for(tmp1 = 0;tmp1 < nr_symtab_entry;tmp1++){
 		if((symtab[tmp1].st_value&0xf)==STT_FUNC){
