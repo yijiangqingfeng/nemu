@@ -94,7 +94,7 @@ static int cmd_x(char *args) {
 }
 
 static int cmd_bt(char *args){
-	if(args == NULL){
+	if(args != NULL){
 		printf("Bad expression\n");
 	}
 	PartOfStackFrame Ebp;
