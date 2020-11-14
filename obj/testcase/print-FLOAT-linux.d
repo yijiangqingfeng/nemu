@@ -1,4 +1,4 @@
-obj/testcase/print-FLOAT.o: testcase/src/print-FLOAT.c \
+obj/testcase/print-FLOAT-linux.o: testcase/src/print-FLOAT.c \
  lib-common/uclibc/include/stdio.h lib-common/uclibc/include/features.h \
  lib-common/uclibc/include/bits/uClibc_config.h \
  lib-common/uclibc/include/sys/cdefs.h \

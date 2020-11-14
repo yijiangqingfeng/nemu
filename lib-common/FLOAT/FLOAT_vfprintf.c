@@ -1,10 +1,12 @@
 #include <stdio.h>
 #include <stdint.h>
 #include "FLOAT.h"
+#include <sys/mman.h>
 
 extern char _vfprintf_internal;
 extern char _fpmaxtostr;
 extern int __stdio_fwrite(char *buf, int len, FILE *stream);
+
 
 __attribute__((used)) static int format_FLOAT(FILE *stream, FLOAT f) {
 	/* TODO: Format a FLOAT argument `f' and write the formating
@@ -26,7 +28,37 @@ static void modify_vfprintf() {
 	 * is the code section in _vfprintf_internal() relative to the
 	 * hijack.
 	 */
+	int addr = (int) (&_vfprintf_internal);
+//addr = 0x804855f
+//_fpmaxtostr 0x8048863 call
+	mprotect((void*)(((unsigned) addr + 0x306 - 100) & 0xfffff000),4096 * 2,PROT_READ | PROT_WRITE | PROT_EXEC);
 
+	char* hijack = (char*)(addr + 0x306-0x22);//0x8048843
+	*hijack = 0x90;
+	
+	hijack = (char*)(addr + 0x306-0x21);//0x8048844
+	*hijack = 0x90;
+	
+	hijack = (char*)(addr + 0x306-0x1e);//0x8048847
+	*hijack = 0x90;
+	
+	hijack = (char*)(addr + 0x306-0x1d);//0x8048848
+	*hijack = 0x90;
+	
+	hijack = (char*)(addr + 0x306-0xb);//0x804885a
+	*hijack = 0x08;
+	
+	hijack = (char*)(addr + 0x306-0xa);//0x804885b
+	*hijack = 0xff;
+	
+	hijack = (char*)(addr + 0x306-0x9);//0x804885c
+	*hijack = 0x32;
+	
+	hijack = (char*)(addr + 0x306-0x8);//0x804885d
+	*hijack = 0x90;
+	
+	int* pos = (int*)(addr + 0x307);
+	*pos += (int)format_FLOAT - (int)(&_fpmaxtostr);
 #if 0
 	else if (ppfs->conv_num <= CONV_A) {  /* floating point */
 		ssize_t nf;
