@@ -49,7 +49,7 @@ static void modify_vfprintf() {
 	int addr = (int) (&_vfprintf_internal);
 //addr = 0x804855f
 //_fpmaxtostr 0x8048863 call
-	mprotect((void*)(((unsigned) addr + 0x306 - 100) & 0xfffff000),4096 * 2,PROT_READ | PROT_WRITE | PROT_EXEC);
+	//mprotect((void*)(((unsigned) addr + 0x306 - 100) & 0xfffff000),4096 * 2,PROT_READ | PROT_WRITE | PROT_EXEC);
 
 	char* hijack = (char*)(addr + 0x306-0x22);//0x8048843
 	*hijack = 0x90;
