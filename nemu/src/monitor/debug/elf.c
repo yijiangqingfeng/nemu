@@ -34,7 +34,7 @@ void getFuncName(uint32_t arg,char* name){
 			}
 		}
 	}
-	return;
+	name[0]='\0';
 }
 void load_elf_tables(int argc, char *argv[]) {
 	int ret;
