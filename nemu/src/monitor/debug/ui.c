@@ -102,7 +102,7 @@ static int cmd_bt(char *args){
 	Ebp.ret_addr = cpu.eip;
 	int cnt = 0;
 	uint32_t addr = cpu.ebp;
-	while(1){
+	while(addr){
 		getFuncName(Ebp.ret_addr,name);
 		if(name[0] == '\0')break;
 		printf("#%d\t0x%08x\t",cnt++,Ebp.ret_addr);
