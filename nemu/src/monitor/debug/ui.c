@@ -10,6 +10,12 @@
 void cpu_exec(uint32_t);
 void display_reg();
 
+void getFuncName(uint32_t addr,char* name);
+typedef struct {
+	swaddr_t prev_ebp;
+	swaddr_t ret_addr;
+	uint32_t args[4];
+}PartOfStackFrame;
 /* We use the `readline' library to provide more flexibility to read from stdin. */
 char* rl_gets() {
 	static char *line_read = NULL;
@@ -87,9 +93,33 @@ static int cmd_x(char *args) {
 	return 0;
 }
 
-//static int cmt_bt(char *args){
-//	return 0;
-//}
+static int cmd_bt(char *args){
+	if(args == NULL){
+		printf("Bad expression\n");
+	}
+	PartOfStackFrame Ebp;
+	char name[32];
+	Ebp.ret_addr = cpu.eip;
+	int cnt = 0;
+	uint32_t addr = cpu.ebp;
+	while(1){
+		getFuncName(Ebp.ret_addr,name);
+		if(name[0] == '\0')break;
+		printf("#%d\t0x%08x\t",cnt++,Ebp.ret_addr);
+		printf("%s",name);
+		Ebp.prev_ebp = swaddr_read(addr,4);
+		Ebp.ret_addr = swaddr_read(addr + 4, 4);
+		printf("(");
+		int i;
+		for(i = 0;i < 4;i ++){
+			Ebp.args[i] = swaddr_read(addr + 8 + i * 4, 4);
+			printf("0x%x",Ebp.args[i]);
+			if(i == 3)printf(")\n");else printf(",");
+		}
+		addr = Ebp.prev_ebp;
+	}
+	return 0;
+}
 
 /* Add expression evaluation  */
 static int cmd_p(char *args) {
@@ -151,7 +181,7 @@ static struct {
         { "p", "Evaluate the value of expression", cmd_p },
 	{ "w", "Set watchpoint", cmd_w },
 	{ "d", "Delete watchpoint", cmd_d },
-	//{ "bt", "Print the stack-frame chain", cmd_bt}
+	{ "bt", "Print the stack-frame chain", cmd_bt}
 
 };
 

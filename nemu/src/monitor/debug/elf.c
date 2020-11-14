@@ -24,13 +24,17 @@ uint32_t getValue(char* str,bool* success){
 	return 0;
 }
 
-uint32_t getFuncName(){
+void getFuncName(uint32_t arg,char* name){
 	int tmp1;
 	for(tmp1 = 0;tmp1 < nr_symtab_entry;tmp1++){
-		if(symtab[tmp1].st_info==STT_FUNC){
-		
+		if((symtab[tmp1].st_value&0xf)==STT_FUNC){
+			if(arg >= symtab[tmp1].st_value && symtab[tmp1].st_value +symtab[tmp1].st_size >= arg){
+				strcpy(name,strtab+symtab[tmp1].st_name);
+				return;
+			}
+		}
 	}
-	return 0;
+	return;
 }
 void load_elf_tables(int argc, char *argv[]) {
 	int ret;
