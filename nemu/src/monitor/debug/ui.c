@@ -10,7 +10,7 @@
 void cpu_exec(uint32_t);
 void display_reg();
 
-void getFuncName(swaddr_t addr,char* name);
+void getFuncName(uint32_t addr,char* name);
 typedef struct {
 	swaddr_t prev_ebp;
 	swaddr_t ret_addr;
@@ -101,7 +101,7 @@ static int cmd_bt(char *args){
 	char name[32];
 	Ebp.ret_addr = cpu.eip;
 	int cnt = 0;
-	swaddr_t addr = cpu.ebp;
+	uint32_t addr = cpu.ebp;
 	while(addr){
 		getFuncName(Ebp.ret_addr,name);
 		if(name[0] == '\0')break;
