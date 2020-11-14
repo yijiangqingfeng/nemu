@@ -27,7 +27,7 @@ uint32_t getValue(char* str,bool* success){
 void getFuncName(swaddr_t arg,char* name){
 	int tmp1;
 	for(tmp1 = 0;tmp1 < nr_symtab_entry;tmp1++){
-		if((symtab[tmp1].st_value&0xf)==STT_FUNC){
+		if((symtab[tmp1].st_info&0xf)==STT_FUNC){
 			if(arg >= symtab[tmp1].st_value && symtab[tmp1].st_value +symtab[tmp1].st_size >= arg){
 				strcpy(name,strtab+symtab[tmp1].st_name);
 				return;
